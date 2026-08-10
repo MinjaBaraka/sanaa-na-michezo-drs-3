@@ -1,6 +1,6 @@
 {
   "title": "Sanaa na Michezo",
-  "bundleVersion": "1",
+  "bundleVersion": "3034fb8e00eaf817",
   "languages": {
     "available": [
       "sw-TZ"
@@ -9,10 +9,10 @@
   },
   "features": {
     "signLanguage": false,
-    "easyRead": false,
+    "easyRead": true,
     "glossary": true,
     "eli5": false,
-    "readAloud": false,
+    "readAloud": true,
     "autoplay": true,
     "showTutorial": true,
     "showNavigationControls": true,
@@ -28,11 +28,5 @@
     "siteId": 0,
     "trackerUrl": "https://unisitetracker.unicef.io/matomo.php",
     "srcUrl": "https://unisitetracker.unicef.io/matomo.js"
-  },
-  "lockedSettings": [
-    "dockLayout",
-    "theme",
-    "iconSize",
-    "reduceMotion"
-  ]
+  }
 }

@@ -17,7 +17,7 @@
     "section_id": "pg004_sec001",
     "href": "pg004_sec001.html",
     "title": "Sura ya Nane",
-    "chapter_id": "pg004_n0003",
+    "chapter_id": "pg004_n0002",
     "level": 1
   },
   {
@@ -42,13 +42,6 @@
     "level": 1
   },
   {
-    "section_id": "pg007_sec002",
-    "href": "pg007_sec002.html",
-    "title": "Utangulizi",
-    "chapter_id": "pg007_n0005",
-    "level": 2
-  },
-  {
     "section_id": "pg009_sec001",
     "href": "pg009_sec001.html",
     "title": "Mambo ya kuzingatia katika Uigizaji",
@@ -63,39 +56,32 @@
     "level": 2
   },
   {
-    "section_id": "pg012_sec003",
-    "href": "pg012_sec003.html",
-    "title": "Kuigiza sauti za vitu visivyo na uhai",
-    "chapter_id": "pg012_n0014",
+    "section_id": "pg012_sec001",
+    "href": "pg012_sec001.html",
+    "title": "Zoezi la 1",
+    "chapter_id": "pg012_n0006",
     "level": 2
   },
   {
-    "section_id": "pg014_sec002",
-    "href": "pg014_sec002.html",
-    "title": "Kazi ya kufanya namba 2",
-    "chapter_id": "pg014_n0008",
-    "level": 3
+    "section_id": "pg014_sec001",
+    "href": "pg014_sec001.html",
+    "title": "Kielelezo namba 3: Vitu visivyo na uhai",
+    "chapter_id": "pg014_n0004",
+    "level": 2
   },
   {
     "section_id": "pg015_sec001",
     "href": "pg015_sec001.html",
     "title": "Umuhimu wa Uigizaji",
-    "chapter_id": "pg015_n0002",
+    "chapter_id": "pg015_n0003",
     "level": 2
-  },
-  {
-    "section_id": "pg015_sec002",
-    "href": "pg015_sec002.html",
-    "title": "Zoezi la 2",
-    "chapter_id": "pg015_n0038",
-    "level": 3
   },
   {
     "section_id": "pg016_sec001",
     "href": "pg016_sec001.html",
     "title": "Msamiati",
     "chapter_id": "pg016_n0002",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg017_sec001",
@@ -129,22 +115,15 @@
     "section_id": "pg022_sec001",
     "href": "pg022_sec001.html",
     "title": "Umuhimu wa uimbaji",
-    "chapter_id": "pg022_n0002",
+    "chapter_id": "pg022_n0001",
     "level": 2
   },
   {
-    "section_id": "pg023_sec002",
-    "href": "pg023_sec002.html",
+    "section_id": "pg023_sec001",
+    "href": "pg023_sec001.html",
     "title": "Zoezi",
     "chapter_id": "pg023_n0009",
-    "level": 3
-  },
-  {
-    "section_id": "pg023_sec003",
-    "href": "pg023_sec003.html",
-    "title": "Msamiati",
-    "chapter_id": "pg023_n0025",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg024_sec001",
@@ -171,21 +150,7 @@
     "section_id": "pg028_sec001",
     "href": "pg028_sec001.html",
     "title": "Kazi ya kufanya namba 2",
-    "chapter_id": "pg028_n0004",
-    "level": 3
-  },
-  {
-    "section_id": "pg028_sec002",
-    "href": "pg028_sec002.html",
-    "title": "Zoezi la 1",
-    "chapter_id": "pg028_n0007",
-    "level": 3
-  },
-  {
-    "section_id": "pg028_sec003",
-    "href": "pg028_sec003.html",
-    "title": "Ala za nyuzi",
-    "chapter_id": "pg028_n0013",
+    "chapter_id": "pg028_n0002",
     "level": 2
   },
   {
@@ -196,24 +161,24 @@
     "level": 2
   },
   {
+    "section_id": "pg031_sec001",
+    "href": "pg031_sec001.html",
+    "title": "Njuga",
+    "chapter_id": "pg031_n0002",
+    "level": 3
+  },
+  {
     "section_id": "pg032_sec001",
     "href": "pg032_sec001.html",
     "title": "Kazi ya kufanya namba 3",
     "chapter_id": "pg032_n0003",
-    "level": 3
+    "level": 2
   },
   {
-    "section_id": "pg032_sec002",
-    "href": "pg032_sec002.html",
-    "title": "Kazi ya kufanya namba 4",
-    "chapter_id": "pg032_n0024",
-    "level": 3
-  },
-  {
-    "section_id": "pg033_sec002",
-    "href": "pg033_sec002.html",
+    "section_id": "pg033_sec001",
+    "href": "pg033_sec001.html",
     "title": "Umuhimu wa ala za muziki",
-    "chapter_id": "pg033_n0007",
+    "chapter_id": "pg033_n0006",
     "level": 2
   },
   {
@@ -221,7 +186,7 @@
     "href": "pg034_sec001.html",
     "title": "Msamiati",
     "chapter_id": "pg034_n0012",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg035_sec001",
@@ -247,30 +212,23 @@
   {
     "section_id": "pg038_sec001",
     "href": "pg038_sec001.html",
-    "title": "Hatua za kuzingatia katika kuchora picha kwa kutumia penseli",
-    "chapter_id": "pg038_n0012",
+    "title": "Kazi ya kufanya namba 1",
+    "chapter_id": "pg038_n0008",
     "level": 2
   },
   {
-    "section_id": "pg039_sec002",
-    "href": "pg039_sec002.html",
-    "title": "Umuhimu wa uchoraji wa picha",
-    "chapter_id": "pg039_n0008",
+    "section_id": "pg039_sec001",
+    "href": "pg039_sec001.html",
+    "title": "Kazi ya kufanya namba 2",
+    "chapter_id": "pg039_n0003",
     "level": 2
   },
   {
     "section_id": "pg040_sec001",
     "href": "pg040_sec001.html",
     "title": "Zoezi",
-    "chapter_id": "pg040_n0002",
-    "level": 3
-  },
-  {
-    "section_id": "pg040_sec002",
-    "href": "pg040_sec002.html",
-    "title": "Msamiati",
-    "chapter_id": "pg040_n0014",
-    "level": 3
+    "chapter_id": "pg040_n0001",
+    "level": 2
   },
   {
     "section_id": "pg041_sec001",
@@ -280,31 +238,17 @@
     "level": 1
   },
   {
-    "section_id": "pg042_sec002",
-    "href": "pg042_sec002.html",
-    "title": "Zoezi la 1",
-    "chapter_id": "pg042_n0028",
-    "level": 2
-  },
-  {
-    "section_id": "pg043_sec002",
-    "href": "pg043_sec002.html",
+    "section_id": "pg043_sec001",
+    "href": "pg043_sec001.html",
     "title": "Njia za kufinyanga kwa udongo wa mfinyanzi",
-    "chapter_id": "pg043_n0009",
+    "chapter_id": "pg043_n0011",
     "level": 2
   },
   {
     "section_id": "pg044_sec001",
     "href": "pg044_sec001.html",
-    "title": "Namna ya kuandaa udongo wa mfinyanzi",
-    "chapter_id": "pg044_n0017",
-    "level": 2
-  },
-  {
-    "section_id": "pg045_sec002",
-    "href": "pg045_sec002.html",
-    "title": "Kazi ya kufanya namba 1",
-    "chapter_id": "pg045_n0023",
+    "title": "Chungu",
+    "chapter_id": "pg044_n0004",
     "level": 3
   },
   {
@@ -319,7 +263,7 @@
     "href": "pg047_sec001.html",
     "title": "Msamiati",
     "chapter_id": "pg047_n0002",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg048_sec001",
@@ -336,11 +280,11 @@
     "level": 2
   },
   {
-    "section_id": "pg051_sec002",
-    "href": "pg051_sec002.html",
+    "section_id": "pg051_sec001",
+    "href": "pg051_sec001.html",
     "title": "Kazi ya kufanya namba 1",
     "chapter_id": "pg051_n0009",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg052_sec001",
@@ -354,14 +298,7 @@
     "href": "pg053_sec001.html",
     "title": "Kazi ya kufanya namba 2",
     "chapter_id": "pg053_n0007",
-    "level": 3
-  },
-  {
-    "section_id": "pg053_sec002",
-    "href": "pg053_sec002.html",
-    "title": "Zoezi la 2",
-    "chapter_id": "pg053_n0012",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg054_sec001",
@@ -374,15 +311,15 @@
     "section_id": "pg056_sec001",
     "href": "pg056_sec001.html",
     "title": "Kazi ya kufanya namba 3",
-    "chapter_id": "pg056_n0002",
-    "level": 3
+    "chapter_id": "pg056_n0003",
+    "level": 2
   },
   {
-    "section_id": "pg057_sec004",
-    "href": "pg057_sec004.html",
-    "title": "Msamiati",
-    "chapter_id": "pg057_n0027",
-    "level": 3
+    "section_id": "pg057_sec001",
+    "href": "pg057_sec001.html",
+    "title": "Kazi ya kufanya namba 4",
+    "chapter_id": "pg057_n0022",
+    "level": 2
   },
   {
     "section_id": "pg058_sec001",
@@ -399,11 +336,11 @@
     "level": 2
   },
   {
-    "section_id": "pg060_sec002",
-    "href": "pg060_sec002.html",
+    "section_id": "pg060_sec001",
+    "href": "pg060_sec001.html",
     "title": "Kazi ya kufanya namba 1",
     "chapter_id": "pg060_n0037",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg061_sec001",
@@ -413,10 +350,10 @@
     "level": 2
   },
   {
-    "section_id": "pg062_sec002",
-    "href": "pg062_sec002.html",
+    "section_id": "pg062_sec001",
+    "href": "pg062_sec001.html",
     "title": "Umuhimu wa mchezo wa rede",
-    "chapter_id": "pg062_n0010",
+    "chapter_id": "pg062_n0011",
     "level": 2
   },
   {
@@ -424,42 +361,42 @@
     "href": "pg063_sec001.html",
     "title": "Namna ya kucheza:",
     "chapter_id": "pg063_n0002",
-    "level": 3
-  },
-  {
-    "section_id": "pg065_sec002",
-    "href": "pg065_sec002.html",
-    "title": "Kukimbia na kijiko",
-    "chapter_id": "pg065_n0007",
     "level": 2
   },
   {
-    "section_id": "pg066_sec002",
-    "href": "pg066_sec002.html",
-    "title": "Zoezi la 2",
-    "chapter_id": "pg066_n0010",
-    "level": 3
+    "section_id": "pg064_sec001",
+    "href": "pg064_sec001.html",
+    "title": "Kazi ya kufanya namba 3",
+    "chapter_id": "pg064_n0006",
+    "level": 2
+  },
+  {
+    "section_id": "pg065_sec001",
+    "href": "pg065_sec001.html",
+    "title": "Kukimbia na kijiko",
+    "chapter_id": "pg065_n0010",
+    "level": 2
+  },
+  {
+    "section_id": "pg066_sec001",
+    "href": "pg066_sec001.html",
+    "title": "Kazi ya kufanya namba 4",
+    "chapter_id": "pg066_n0007",
+    "level": 2
   },
   {
     "section_id": "pg067_sec001",
     "href": "pg067_sec001.html",
     "title": "Msamiati",
     "chapter_id": "pg067_n0002",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg068_sec001",
     "href": "pg068_sec001.html",
     "title": "Sura ya Nane",
-    "chapter_id": "pg068_n0003",
+    "chapter_id": "pg068_n0002",
     "level": 1
-  },
-  {
-    "section_id": "pg068_sec002",
-    "href": "pg068_sec002.html",
-    "title": "Fikiri",
-    "chapter_id": "pg068_n0012",
-    "level": 2
   },
   {
     "section_id": "pg069_sec001",
@@ -469,10 +406,10 @@
     "level": 2
   },
   {
-    "section_id": "pg070_sec003",
-    "href": "pg070_sec003.html",
+    "section_id": "pg070_sec001",
+    "href": "pg070_sec001.html",
     "title": "Maonesho ya sanaa sanifu",
-    "chapter_id": "pg070_n0035",
+    "chapter_id": "pg070_n0029",
     "level": 3
   },
   {
@@ -480,13 +417,6 @@
     "href": "pg073_sec001.html",
     "title": "Kazi ya kufanya namba 2",
     "chapter_id": "pg073_n0003",
-    "level": 3
-  },
-  {
-    "section_id": "pg073_sec002",
-    "href": "pg073_sec002.html",
-    "title": "Maonesho ya uimbaji",
-    "chapter_id": "pg073_n0016",
     "level": 2
   },
   {
@@ -494,7 +424,7 @@
     "href": "pg074_sec001.html",
     "title": "Mambo ya kuzingatia wakati wa kushiriki maonesho ya uimbaji",
     "chapter_id": "pg074_n0008",
-    "level": 3
+    "level": 2
   },
   {
     "section_id": "pg076_sec001",
@@ -504,25 +434,18 @@
     "level": 2
   },
   {
-    "section_id": "pg076_sec003",
-    "href": "pg076_sec003.html",
-    "title": "Msamiati",
-    "chapter_id": "pg076_n0035",
-    "level": 3
-  },
-  {
     "section_id": "pg077_sec001",
     "href": "pg077_sec001.html",
     "title": "Jaribio",
     "chapter_id": "pg077_n0002",
-    "level": 1
+    "level": 2
   },
   {
-    "section_id": "pg078_sec002",
-    "href": "pg078_sec002.html",
+    "section_id": "pg078_sec001",
+    "href": "pg078_sec001.html",
     "title": "Orodha A",
-    "chapter_id": "pg078_n0016",
-    "level": 2
+    "chapter_id": "pg078_n0015",
+    "level": 3
   },
   {
     "section_id": "pg080_sec001",

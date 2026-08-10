@@ -8,7 +8,7 @@ This document describes the structure of this Accessible Digital Textbook (ADT) 
 
 - **Source language**: `sw-TZ`
 - **Available languages in this bundle**: `sw-TZ`
-- **Total pages**: 126
+- **Total pages**: 80
 - **Glossary**: yes
 
 ## Quick Overview
@@ -193,7 +193,7 @@ An ordered array that defines the navigation spine. Every page section and quiz 
 [
   { "section_id": "pg001_sec001", "href": "index.html" },
   { "section_id": "pg002_sec001", "href": "pg002_sec001.html" },
-  { "section_id": "pg003_sec001", "href": "pg003_sec001.html", "page_number": 3 },
+  { "section_id": "pg003_sec001", "href": "pg003_sec001.html" },
   { "section_id": "pg004_sec001", "href": "pg004_sec001.html" },
   { "section_id": "pg005_sec001", "href": "pg005_sec001.html" }
 ]
@@ -212,9 +212,9 @@ A flat `Record<textId, string>` containing every piece of text in the book. Exam
 ```json
 {
   "pg001_gp001_tx001": "",
-  "pg001_im001": "",
-  "gl001": "akili",
-  "gl001_def": "uwezo wa kufikiri, kuelewa na kukumbuka."
+  "pg001_im001": "Cheti cha uthibati cha kitabu cha Sanaa na Michezo Darasa la Tatu kutoka Jamhuri ya Muungano wa Tanzania, Wizara ya Elimu, Sayansi na Teknolojia, kikiwa na taarifa za Taasisi ya Elimu Tanzania, ISBN, tarehe 23 Oktoba 2023 na sahihi ya Kamishna wa Elimu.",
+  "gl001": "ala",
+  "gl001_def": "Kifaa kinachotumika kutengeneza au kutoa sauti katika muziki."
 }
 ```
 
@@ -237,11 +237,11 @@ Keyed by word (lowercase). Each entry has the word, a simple definition, inflect
 
 ```json
 {
-  "akili": {
-    "word": "akili",
-    "definition": "uwezo wa kufikiri, kuelewa na kukumbuka.",
-    "variations": ["akili"],
-    "emoji": "🧠"
+  "ala": {
+    "word": "ala",
+    "definition": "Kifaa kinachotumika kutengeneza au kutoa sauti katika muziki.",
+    "variations": ["ala","ala za muziki"],
+    "emoji": "🎵🥁"
   }
 }
 ```
@@ -255,7 +255,7 @@ Controls which features the reader UI enables. This book's config:
 ```json
 {
   "title": "Sanaa na Michezo",
-  "bundleVersion": "1",
+  "bundleVersion": "3034fb8e00eaf817",
   "languages": {
     "available": [
       "sw-TZ"
@@ -264,10 +264,10 @@ Controls which features the reader UI enables. This book's config:
   },
   "features": {
     "signLanguage": false,
-    "easyRead": false,
+    "easyRead": true,
     "glossary": true,
     "eli5": false,
-    "readAloud": false,
+    "readAloud": true,
     "autoplay": true,
     "showTutorial": true,
     "showNavigationControls": true,
@@ -283,13 +283,7 @@ Controls which features the reader UI enables. This book's config:
     "siteId": 0,
     "trackerUrl": "https://unisitetracker.unicef.io/matomo.php",
     "srcUrl": "https://unisitetracker.unicef.io/matomo.js"
-  },
-  "lockedSettings": [
-    "dockLayout",
-    "theme",
-    "iconSize",
-    "reduceMotion"
-  ]
+  }
 }
 ```
 
@@ -301,7 +295,7 @@ Each page is a standalone HTML file at the root of `adt/`. Key structural elemen
 <!DOCTYPE html>
 <html lang="sw-TZ">
 <head>
-    <meta name="title-id" content="pg003_sec001" />      <!-- section identity -->
+    <meta name="title-id" content="pg007_sec001" />      <!-- section identity -->
     <meta name="page-section-id" content="2" />           <!-- 1-based index in pages.json -->
     <link href="./content/tailwind_output.css" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
@@ -310,7 +304,7 @@ Each page is a standalone HTML file at the root of `adt/`. Key structural elemen
 <body>
     <div id="content" class="opacity-0">
         <section role="article" data-section-type="text_and_single_image"
-                 data-section-id="pg003_sec001">
+                 data-section-id="pg007_sec001">
             <!-- Images use relative paths and carry data-id for alt text lookup -->
             <img data-id="pg001_im001" src="images/pg001_im001.png" ...>
 
