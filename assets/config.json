@@ -9,10 +9,10 @@
   },
   "features": {
     "signLanguage": false,
-    "easyRead": true,
+    "easyRead": false,
     "glossary": true,
     "eli5": false,
-    "readAloud": true,
+    "readAloud": false,
     "autoplay": true,
     "showTutorial": true,
     "showNavigationControls": true,

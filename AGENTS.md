@@ -212,7 +212,7 @@ A flat `Record<textId, string>` containing every piece of text in the book. Exam
 ```json
 {
   "pg001_gp001_tx001": "",
-  "pg001_im001": "Cheti cha uthibati cha kitabu cha Sanaa na Michezo Darasa la Tatu kutoka Jamhuri ya Muungano wa Tanzania, Wizara ya Elimu, Sayansi na Teknolojia, kikiwa na taarifa za Taasisi ya Elimu Tanzania, ISBN, tarehe 23 Oktoba 2023 na sahihi ya Kamishna wa Elimu.",
+  "pg001_im001": "",
   "gl001": "akili",
   "gl001_def": "uwezo wa kufikiri, kuelewa na kukumbuka."
 }
@@ -264,10 +264,10 @@ Controls which features the reader UI enables. This book's config:
   },
   "features": {
     "signLanguage": false,
-    "easyRead": true,
+    "easyRead": false,
     "glossary": true,
     "eli5": false,
-    "readAloud": true,
+    "readAloud": false,
     "autoplay": true,
     "showTutorial": true,
     "showNavigationControls": true,
