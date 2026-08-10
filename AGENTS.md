@@ -255,7 +255,7 @@ Controls which features the reader UI enables. This book's config:
 ```json
 {
   "title": "Sanaa na Michezo",
-  "bundleVersion": "be95c291b3142e34",
+  "bundleVersion": "1",
   "languages": {
     "available": [
       "sw-TZ"
@@ -283,7 +283,13 @@ Controls which features the reader UI enables. This book's config:
     "siteId": 0,
     "trackerUrl": "https://unisitetracker.unicef.io/matomo.php",
     "srcUrl": "https://unisitetracker.unicef.io/matomo.js"
-  }
+  },
+  "lockedSettings": [
+    "dockLayout",
+    "theme",
+    "iconSize",
+    "reduceMotion"
+  ]
 }
 ```
 
