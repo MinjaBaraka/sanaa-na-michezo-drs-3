@@ -10,17 +10,138 @@
     <link href="./content/tailwind_output.css" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css" rel="stylesheet">
+    <style>
+      body { background: #f7fbf4; }
+      #content {
+        max-width: 58rem !important;
+        margin: 0 auto !important;
+        padding: 2.75rem 4rem 3.25rem !important;
+        background:
+          radial-gradient(circle at 50% 46%, rgba(255,255,255,.98) 18%, rgba(255,255,255,.82) 53%, rgba(223,244,211,.88) 100%);
+      }
+      #content section > p:first-child,
+      #content section > p:nth-of-type(2) {
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 1.48rem;
+        line-height: 1.4;
+        margin: 0 0 1.35rem;
+      }
+      #content section > p:first-child i { display: none; }
+      #content section > div:nth-of-type(1) {
+        margin: .25rem auto 1.25rem !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+      }
+      #content section > div:nth-of-type(1) img {
+        width: 18rem !important;
+        margin: 0 auto .25rem !important;
+      }
+      #content section > div:nth-of-type(1) span {
+        max-width: 34rem;
+        color: #202020 !important;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700 !important;
+        font-style: italic;
+      }
+      #content section > div:nth-of-type(2) {
+        position: relative;
+        margin: 1.55rem 0 1.6rem !important;
+        padding: 3.75rem 1.35rem 1.35rem !important;
+        background: #eef3df !important;
+        border: 1px solid #9bbf62;
+        border-radius: 0 0 .9rem .9rem !important;
+        box-shadow: none !important;
+      }
+      #content section > div:nth-of-type(2)::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 6rem;
+        right: 0;
+        height: 1.75rem;
+        border-radius: 0 1rem 1rem 0;
+        background: linear-gradient(#aee168, #6caa25 70%, #315d0d);
+      }
+      #content section > div:nth-of-type(2) > div {
+        position: absolute;
+        top: -.6rem;
+        left: 0;
+        display: flex !important;
+        align-items: center;
+        gap: .55rem !important;
+        margin: 0 !important;
+      }
+      #content section > div:nth-of-type(2) > div img {
+        width: 5.25rem !important;
+        height: 4rem !important;
+        object-fit: contain;
+        border: 1px solid #95be51;
+        border-radius: 50%;
+        background: white;
+        padding: .16rem;
+      }
+      #content section > div:nth-of-type(2) > div span {
+        position: relative;
+        z-index: 1;
+        padding: .48rem 1.2rem;
+        border-radius: 0 1.25rem 1.25rem 0;
+        background: linear-gradient(#aee168, #70af29);
+        color: white !important;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 1.32rem;
+        font-weight: 700 !important;
+      }
+      #content section > div:nth-of-type(2) > span {
+        display: block;
+        color: #202020 !important;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400 !important;
+        line-height: 1.42;
+      }
+      #content section > h1 {
+        display: inline-block;
+        margin: .25rem 0 0 !important;
+        padding: .52rem 1.25rem;
+        border-radius: 0 1.1rem 1.1rem 0;
+        background: #10aee0;
+        color: #fff15b !important;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 1.55rem !important;
+        line-height: 1.1;
+      }
+      #content section > h1 + div,
+      #content section > h1 + div + div,
+      #content section > h1 + div + div + div {
+        margin: 0 !important;
+        padding: .58rem 1.35rem !important;
+        background: #fff7b9;
+        border-left: 2px dashed #10aee0;
+        border-right: 2px dashed #10aee0;
+      }
+      #content section > h1 + div { border-top: 2px dashed #10aee0; border-radius: 0 .9rem 0 0; padding-top: .85rem !important; }
+      #content section > h1 + div + div + div { border-bottom: 2px dashed #10aee0; border-radius: 0 0 .9rem .9rem; padding-bottom: .85rem !important; }
+      #content section > h1 ~ div p {
+        margin: 0 !important;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+        font-size: 1.28rem !important;
+        line-height: 1.35;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
     <main class="w-full">
-      <div class="container mx-auto max-w-5xl bg-white rounded-lg px-24 max-lg:px-12 max-sm:px-6 pt-12 pb-12 opacity-0" id="content"><section data-section-type="activity_open_ended_answer" data-section-id="pg051_sec001" class="max-w-6xl mx-auto"><p class="text-xl mb-6"><i class="fas fa-book text-blue-700 mr-2"></i><span data-id="pg051_n0002">3. Endelea kwa kubadilisha mguu wa kushoto mbele ya kidole cha mguu wa kulia.</span></p><div class="bg-amber-50 rounded-xl p-4 mb-8 flex flex-col items-center"><img src="images/pg051_im002.jpg" alt="Mwanafunzi akitembea kwa kisigino cha mguu wa kushoto huku mikono ikiwa imenyoshwa pembeni kwa usawaziko." data-id="pg051_im002" class="w-64 max-w-full mb-3" style="max-width: 100%; height: auto;"><span class="text-center text-base font-semibold text-amber-900" data-id="pg051_n0004">Kielelezo Na 4: Mwanafunzi akianza kutembea kwa mguu wa kushoto</span></div><p class="text-xl mb-8"><span data-id="pg051_n0006">4. Rudia huku ukisonga mbele.</span></p><div class="bg-amber-50 p-4 rounded-lg -mr-6 pr-8 rounded-lg font-semibold mb-8"><div class="flex items-center gap-4 mb-3"><img src="images/pg051_im001.jpg" alt="" data-id="pg051_im001" class="w-20 h-auto" style="max-width: 100%; height: auto;" role="presentation" aria-hidden="true"><span class="text-amber-900 font-semibold" data-id="pg051_n0009">Kazi ya kufanya namba 1</span></div><span class="text-amber-900 font-semibold" data-id="pg051_n0011">Fanya zoezi la kisigino kidoleni mpaka uweze kutembea hivyo kwa kasi.</span></div><h1 class="text-5xl font-bold mb-4 text-amber-700" data-id="pg051_n0013">Zoezi la 1</h1><div class="mb-6"><p class="text-lg mb-2"><span data-id="pg051_n0014">1. Je, zoezi hili linaendana na zoezi gani ulilowahi kufanya?</span></p><textarea class="w-full p-2 border border-gray-400 rounded min-h-32 resize-none" data-aria-id="aria-1-0-0" aria-label="Jibu la swali la kwanza kuhusu zoezi linalofanana" tabindex="0"></textarea></div><div class="mb-6"><p class="text-lg mb-2"><span data-id="pg051_n0015">2. Je, nini umuhimu wa zoezi hili kwako?</span></p><textarea class="w-full p-2 border border-gray-400 rounded min-h-32 resize-none" data-aria-id="aria-1-0-1" aria-label="Jibu la swali la pili kuhusu umuhimu wa zoezi hili" tabindex="0"></textarea></div><div class="mb-6"><p class="text-lg mb-2"><span data-id="pg051_n0016">3. Je, zoezi hili litakusaidia kucheza michezo gani?</span></p><textarea class="w-full p-2 border border-gray-400 rounded min-h-32 resize-none" data-aria-id="aria-1-0-2" aria-label="Jibu la swali la tatu kuhusu michezo itakayosaidiwa na zoezi hili" tabindex="0"></textarea></div></section></div>
+      <div class="container mx-auto max-w-5xl bg-white rounded-lg px-24 max-lg:px-12 max-sm:px-6 pt-12 pb-12 opacity-0" id="content"><section data-section-type="text" data-section-id="pg051_sec001" class="max-w-6xl mx-auto"><p class="text-xl mb-6"><i class="fas fa-book text-blue-700 mr-2"></i><span data-id="pg051_n0002">3. Endelea kwa kubadilisha mguu wa kushoto mbele ya kidole cha mguu wa kulia.</span></p><div class="bg-amber-50 rounded-xl p-4 mb-8 flex flex-col items-center"><img src="images/pg051_im002.jpg" alt="Mwanafunzi akitembea kwa kisigino cha mguu wa kushoto huku mikono ikiwa imenyoshwa pembeni kwa usawaziko." data-id="pg051_im002" class="w-64 max-w-full mb-3" style="max-width: 100%; height: auto;"><span class="text-center text-base font-semibold text-amber-900" data-id="pg051_n0004">Kielelezo Na 4: Mwanafunzi akianza kutembea kwa mguu wa kushoto</span></div><p class="text-xl mb-8"><span data-id="pg051_n0006">4. Rudia huku ukisonga mbele.</span></p><div class="bg-amber-50 p-4 rounded-lg -mr-6 pr-8 rounded-lg font-semibold mb-8"><div class="flex items-center gap-4 mb-3"><img src="images/pg051_im001.jpg" alt="" data-id="pg051_im001" class="w-20 h-auto" style="max-width: 100%; height: auto;" role="presentation" aria-hidden="true"><span class="text-amber-900 font-semibold" data-id="pg051_n0009">Kazi ya kufanya namba 1</span></div><span class="text-amber-900 font-semibold" data-id="pg051_n0011">Fanya zoezi la kisigino kidoleni mpaka uweze kutembea hivyo kwa kasi.</span></div><h1 class="text-5xl font-bold mb-4 text-amber-700" data-id="pg051_n0013">Zoezi la 1</h1><div class="mb-6"><p class="text-lg mb-2"><span data-id="pg051_n0014">1. Je, zoezi hili linaendana na zoezi gani ulilowahi kufanya?</span></p></div><div class="mb-6"><p class="text-lg mb-2"><span data-id="pg051_n0015">2. Je, nini umuhimu wa zoezi hili kwako?</span></p></div><div class="mb-6"><p class="text-lg mb-2"><span data-id="pg051_n0016">3. Je, zoezi hili litakusaidia kucheza michezo gani?</span></p></div></section></div>
     </main>
 
     <div class="relative z-50" id="interface-container"></div>
     <div class="relative z-50" id="nav-container"></div>
-    <script src="./assets/offline-preloader.js"></script>
+    <script src="./assets/offline-preloader.js?v=6"></script>
     <script src="./assets/scorm.js"></script>
+    <script src="./assets/hide-submit-buttons.js?v=2"></script>
     <script src="./assets/base.bundle.local.js"></script>
 </body>
 

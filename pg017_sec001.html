@@ -10,6 +10,15 @@
     <link href="./content/tailwind_output.css" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css" rel="stylesheet">
+    <style>
+      /* Reserve a column for the illustration so it can never cover item (a). */
+      #pg017-fikiri-icon { left: 2rem !important; top: -1.6rem !important; width: 6.8rem !important; height: 6.8rem !important; z-index: 2; }
+      #pg017-fikiri-icon img { display: block !important; width: 5.7rem !important; height: 5.7rem !important; max-width: 5.7rem !important; max-height: 5.7rem !important; object-fit: contain !important; }
+      #pg017-fikiri-list { padding-left: 10.2rem !important; padding-right: 2rem !important; min-height: 9.2rem; }
+      @media (max-width: 640px) {
+        #pg017-fikiri-list { padding-left: 8.2rem !important; padding-right: 1rem !important; }
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -48,18 +57,20 @@
           </p>
         </aside>
 
-        <aside class="relative mx-auto w-full max-w-[850px] bg-yellow-100 border-l-4 border-r-4 border-sky-400 [clip-path:polygon(0_20%,5%_0,94%_0,100%_18%,100%_86%,94%_100%,5%_100%,0_86%)] shadow-[0_4px_10px_rgba(14,165,233,0.08)]">
+        <aside id="pg017-fikiri-card" class="relative mx-auto w-full max-w-[850px]">
+          <div class="bg-yellow-100 border-l-4 border-r-4 border-sky-400 [clip-path:polygon(0_20%,5%_0,94%_0,100%_18%,100%_86%,94%_100%,5%_100%,0_86%)] shadow-[0_4px_10px_rgba(14,165,233,0.08)]">
           <div class="relative bg-sky-400 px-4 pb-4 pt-5 sm:px-7 sm:pb-5 sm:pt-5 md:px-8">
-            <div class="absolute left-12 top-[-22px] rounded-sm border-[6px] border-sky-500 bg-white p-1 shadow-md sm:left-14 sm:top-[-26px] md:left-10">
-              <img data-id="pg017_im001" src="images/pg017_im001.png" alt="Mtoto akitafakari kwa makini." class="h-24 w-24 object-contain sm:h-24 sm:w-24 md:h-28 md:w-28" style="max-width: 100%; height: auto;">
-            </div>
             <h3 data-id="pg017_n0017" class="adt-h3 m-0 pt-14 text-center font-extrabold text-slate-900 text-[2rem] leading-none sm:pt-2 sm:text-[2.35rem] md:text-[2.45rem]">Fikiri</h3>
           </div>
-          <ul class="bg-yellow-100 px-10 pb-8 pt-5 sm:px-14 sm:pb-10 sm:pt-6 md:px-16">
+          <ul id="pg017-fikiri-list" class="bg-yellow-100 px-10 pb-8 pt-5 sm:px-14 sm:pb-10 sm:pt-6 md:px-16">
             <li data-id="pg017_n0020" class="adt-body mb-3 text-left text-slate-900 text-[1.2rem] sm:text-[1.45rem] md:text-[1.22rem]">(a) Maana ya uimbaji</li>
             <li data-id="pg017_n0022" class="adt-body mb-3 text-left text-slate-900 text-[1.2rem] sm:text-[1.45rem] md:text-[1.22rem]">(b) Mkao sahihi wakati wa kuimba</li>
             <li data-id="pg017_n0024" class="adt-body text-left text-slate-900 text-[1.2rem] sm:text-[1.45rem] md:text-[1.22rem]">(c) Faida za uimbaji</li>
           </ul>
+          </div>
+          <div id="pg017-fikiri-icon" class="absolute rounded-sm border-[6px] border-sky-500 bg-white p-1 shadow-md">
+            <img data-id="pg017_im001" src="images/pg017_im001.png" alt="Mtoto akitafakari kwa makini." class="object-contain" style="max-width: 100%; height: auto;">
+          </div>
         </aside>
 
         <div class="mt-10 flex justify-center">
@@ -75,8 +86,9 @@
 
     <div class="relative z-50" id="interface-container"></div>
     <div class="relative z-50" id="nav-container"></div>
-    <script src="./assets/offline-preloader.js"></script>
+    <script src="./assets/offline-preloader.js?v=3"></script>
     <script src="./assets/scorm.js"></script>
+    <script src="./assets/hide-submit-buttons.js?v=2"></script>
     <script src="./assets/base.bundle.local.js"></script>
 </body>
 
