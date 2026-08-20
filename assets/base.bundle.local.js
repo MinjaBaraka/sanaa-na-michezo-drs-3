@@ -1,4 +1,29 @@
 "use strict";
+// VS Code Live Server injects a WebSocket client into every preview page. On
+// this bundle it reloads the entire document as individual MP3 files are read,
+// which visibly flashes the page and cuts off narration. Block only that
+// preview socket (`.../ws`); ordinary WebSockets remain available to the book.
+if (typeof window !== "undefined" && typeof window.WebSocket === "function") {
+  const NativeWebSocket = window.WebSocket;
+  window.WebSocket = function(url, protocols) {
+    if (typeof url === "string" && /\/ws(?:\?.*)?$/.test(url)) {
+      return {
+        readyState: 3,
+        close() {},
+        send() {},
+        addEventListener() {},
+        removeEventListener() {},
+        dispatchEvent() { return false; }
+      };
+    }
+    return protocols === void 0 ? new NativeWebSocket(url) : new NativeWebSocket(url, protocols);
+  };
+  window.WebSocket.prototype = NativeWebSocket.prototype;
+  window.WebSocket.CONNECTING = NativeWebSocket.CONNECTING;
+  window.WebSocket.OPEN = NativeWebSocket.OPEN;
+  window.WebSocket.CLOSING = NativeWebSocket.CLOSING;
+  window.WebSocket.CLOSED = NativeWebSocket.CLOSED;
+}
 var AdtRuntime = (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -26501,7 +26526,9 @@ function useAtomValueWithDelay<Value>(
   var signLanguageModeAtom = persistedBoolAtom("signLanguageMode", false);
   var glossaryModeAtom = persistedBoolAtom("glossaryMode", false);
   var syllablesModeAtom = persistedBoolAtom("syllablesMode", false);
-  var stateModeAtom = persistedBoolAtom("stateMode", false);
+  // Keep reader controls visible. Older saved settings could hide the dock
+  // during playback, making the audio controls look like they were blinking.
+  var stateModeAtom = persistedBoolAtom("stateModeV2", false);
   var dockWidthAtom = persistedStringAtom("dockWidth", "full");
   var dockPositionAtom = persistedStringAtom("dockPosition", "bottom");
   var dockAlignAtom = persistedStringAtom("dockAlign", "spread");
@@ -39649,13 +39676,20 @@ function useAtomValueWithDelay<Value>(
   });
 
   // src/features/audio/state/audio.atoms.ts
-  var readAloudModeAtom = persistedBoolAtom("readAloudMode", false);
-  var autoplayModeAtom = persistedBoolAtom("autoplayMode", true);
-  var wordHighlightModeAtom = persistedBoolAtom("wordHighlightMode", true);
+  // Read-aloud is a live session only.  Persisting it across HTML pages leaves
+  // the toolbar falsely active after the old Audio element has been discarded.
+  var readAloudModeAtom = ephemeralAtom(false);
+  // Do not attempt playback before the learner presses the speaker control.
+  // Browsers may reject automatic audio and leave a distracting visual cue.
+  var autoplayModeAtom = persistedBoolAtom("autoplayModeV2", false);
+  // Use a new persisted key so existing readers with word highlighting enabled
+  // start with a calm, non-flashing read-aloud experience.
+  var wordHighlightModeAtom = persistedBoolAtom("wordHighlightModeV2", false);
   var describeImagesModeAtom = persistedBoolAtom("describeImagesMode", false);
   var audioSpeedAtom = persistedNumberAtom("audioSpeed", 1);
   var audioVolumeAtom = persistedNumberAtom("audioVolume", 1);
-  var isPlayingAtom = persistedBoolAtom("isPlaying", false);
+  // Do not inherit an interrupted playback state from an earlier runtime.
+  var isPlayingAtom = persistedBoolAtom("isPlayingV2", false);
   var currentAudioIndexAtom = ephemeralAtom(0);
   var playBarVisibleAtom = ephemeralAtom(false);
   var speedMenuOpenAtom = ephemeralAtom(false);
@@ -43655,6 +43689,9 @@ function useAtomValueWithDelay<Value>(
     const setupHighlight = (0, import_react21.useCallback)(
       (item, audio) => {
         teardownActive();
+        // Keep read-aloud visually calm: a moving word/block highlight can look
+        // like flashing and makes it harder to follow the narration.
+        return;
         const text = item.el.textContent ?? "";
         const precise = timecodeMap[item.id];
         const useWord = wordHighlightModeRef.current && elementSupportsWordHighlight(item.el) && !(item.useBlockWhenMissingTimecodes && !precise);
@@ -43737,7 +43774,13 @@ function useAtomValueWithDelay<Value>(
         audio.onerror = () => {
           console.warn("[adt-runtime] audio playback failed for", url);
           teardownActive();
-          setIsPlaying(false);
+          const next = index2 + 1;
+          if (next < items.length) {
+            playAtIndex(next);
+          } else {
+            setIsPlaying(false);
+            setCurrentIndex(0);
+          }
         };
         setupHighlight(item, audio);
         setCurrentIndex(index2);
@@ -43749,7 +43792,13 @@ function useAtomValueWithDelay<Value>(
           if (session !== playSessionRef.current) return;
           console.warn("[adt-runtime] audio.play() rejected", err);
           teardownActive();
-          setIsPlaying(false);
+          const next = index2 + 1;
+          if (next < items.length) {
+            playAtIndex(next);
+          } else {
+            setIsPlaying(false);
+            setCurrentIndex(0);
+          }
         });
       },
       [
@@ -49926,7 +49975,7 @@ function useAtomValueWithDelay<Value>(
             ariaLabel: readAloud ? t("deactivate-tts-label") || "Deactivate text to speech" : t("activate-tts-label") || "Activate text to speech",
             pressed: readAloud,
             onClick: toggleReadAloud,
-            children: readAloud ? /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Volume2, { className: cn(isPlaying && "animate-pulse") }) : /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(VolumeX, {})
+            children: readAloud ? /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Volume2, {}) : /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(VolumeX, {})
           }
         ) : null,
         showSignLanguage ? /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
@@ -50019,16 +50068,16 @@ function useAtomValueWithDelay<Value>(
         "data-testid": "dock-skeleton",
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: "flex items-center gap-2.5 pl-1 pr-2 py-1 min-w-0", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "h-10 w-10 rounded-lg bg-muted/60 animate-pulse motion-reduce:animate-none" }),
+            /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "h-10 w-10 rounded-lg bg-muted/60" }),
             /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)("div", { className: "hidden sm:flex flex-col gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "h-3 w-32 rounded bg-muted/60 animate-pulse motion-reduce:animate-none" }),
-              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "h-2 w-24 rounded bg-muted/40 animate-pulse motion-reduce:animate-none" })
+              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "h-3 w-32 rounded bg-muted/60" }),
+              /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "h-2 w-24 rounded bg-muted/40" })
             ] })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime85.jsx)("div", { className: "flex items-center gap-1", children: Array.from({ length: 5 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(
             "div",
             {
-              className: "h-10 w-10 rounded-lg bg-muted/60 animate-pulse motion-reduce:animate-none"
+              className: "h-10 w-10 rounded-lg bg-muted/60"
             },
             i
           )) })

@@ -48,6 +48,18 @@ ROMAN_ORDINALS = {
     "ix": "tisa",
     "x": "kumi",
 }
+ROMAN_CARDINALS = {
+    "i": "moja",
+    "ii": "mbili",
+    "iii": "tatu",
+    "iv": "nne",
+    "v": "tano",
+    "vi": "sita",
+    "vii": "saba",
+    "viii": "nane",
+    "ix": "tisa",
+    "x": "kumi",
+}
 OPTION_LETTER_NAMES = {"a": "a", "b": "be", "c": "si", "d": "di"}
 
 
@@ -63,26 +75,34 @@ def speech_text(text: str) -> str:
     # Rehema should pronounce the standalone digit 4 as the full Swahili word.
     # Do not change digits embedded in phone numbers, postcodes, or dates.
     expanded = re.sub(r"(?<!\d)4(?!\d)", "nne", expanded)
+    # Standardize figure labels so variants such as "Kielelezo Na 5" are
+    # spoken naturally as "Kielelezo namba 5".
+    expanded = re.sub(
+        r"\bKielelezo\s+(?:Na\.?|Namba)\s*(?=\d)",
+        "Kielelezo namba ",
+        expanded,
+        flags=re.IGNORECASE,
+    )
     # Read answer labels as question items. In particular, C must not be read
     # as the Roman numeral one hundred.
     expanded = re.sub(
         r"^\s*\(?([a-d])\)?\.?\s*",
-        lambda match: f"Kipengele {OPTION_LETTER_NAMES[match.group(1).lower()]}. ",
+        lambda match: f"Kipengele cha {OPTION_LETTER_NAMES[match.group(1).lower()]}. ",
         expanded,
         flags=re.IGNORECASE,
     )
     expanded = re.sub(
         r"\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)\s*(?:[–-]|dash|hadi|mpaka)\s*\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)",
         lambda match: (
-            f"kipengele cha {ROMAN_ORDINALS[match.group(1).lower()]} "
-            f"mpaka kipengele cha {ROMAN_ORDINALS[match.group(2).lower()]}"
+            f"namba ya Kirumi namba {ROMAN_CARDINALS[match.group(1).lower()]} "
+            f"mpaka namba ya Kirumi namba {ROMAN_CARDINALS[match.group(2).lower()]}"
         ),
         expanded,
         flags=re.IGNORECASE,
     )
     return re.sub(
         r"\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)\s*",
-        lambda match: f"Kipengele cha {ROMAN_ORDINALS[match.group(1).lower()]}. ",
+        lambda match: f"Namba ya Kirumi namba {ROMAN_CARDINALS[match.group(1).lower()]}. ",
         expanded,
         flags=re.IGNORECASE,
     )
@@ -122,6 +142,12 @@ async def main() -> int:
         help="Generate one text ID only. Can repeat.",
     )
     parser.add_argument(
+        "--contains",
+        action="append",
+        metavar="TEXT",
+        help="Generate entries whose text contains this value. Can repeat.",
+    )
+    parser.add_argument(
         "--numbered-items-only",
         action="store_true",
         help="Generate only activity labels expanded to 'Swali la …'.",
@@ -130,6 +156,21 @@ async def main() -> int:
         "--roman-items-only",
         action="store_true",
         help="Generate only entries containing Roman-numbered activity items.",
+    )
+    parser.add_argument(
+        "--letter-items-only",
+        action="store_true",
+        help="Generate only entries beginning with a lettered item such as (a).",
+    )
+    parser.add_argument(
+        "--question-labels-only",
+        action="store_true",
+        help="Generate only labels beginning with 'Swali namba'.",
+    )
+    parser.add_argument(
+        "--step-labels-only",
+        action="store_true",
+        help="Generate only labels beginning with 'Hatua ya'.",
     )
     parser.add_argument(
         "--standalone-number",
@@ -164,15 +205,23 @@ async def main() -> int:
         if missing:
             print(f"Error: no audio matches: {', '.join(sorted(missing))}", file=sys.stderr)
             return 2
+    if args.contains:
+        needles = [needle.casefold() for needle in args.contains]
+        jobs = [job for job in jobs if all(needle in job[2].casefold() for needle in needles)]
     if args.numbered_items_only:
         jobs = [job for job in jobs if job[2].startswith("Swali la ")]
     if args.roman_items_only:
         roman_item = re.compile(
-            r"\((?:x|ix|viii|vii|vi|iv|iii|ii|v|i)\)|"
-            r"\bKipengele cha (?:kwanza|pili|tatu|nne|tano|sita|saba|nane|tisa|kumi)\b",
+            r"\((?:x|ix|viii|vii|vi|iv|iii|ii|v|i)\)",
             flags=re.IGNORECASE,
         )
         jobs = [job for job in jobs if roman_item.search(job[2])]
+    if args.letter_items_only:
+        jobs = [job for job in jobs if re.match(r"\s*\([a-d]\)", job[2], re.IGNORECASE)]
+    if args.question_labels_only:
+        jobs = [job for job in jobs if job[2].startswith("Swali namba ")]
+    if args.step_labels_only:
+        jobs = [job for job in jobs if job[2].startswith("Hatua ya ")]
     if args.standalone_number:
         number = re.escape(args.standalone_number)
         jobs = [job for job in jobs if re.search(rf"(?<!\d){number}(?!\d)", job[2])]

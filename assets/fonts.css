@@ -59,3 +59,10 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, button, input, textarea, select {
 #interface-container, #interface-container *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands) {
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
+
+/* The reader is intentionally motion-free so audio controls and page loading
+   never look like flashing to a learner. */
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+}

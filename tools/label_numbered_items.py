@@ -11,9 +11,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEXTS = ROOT / "content/i18n/sw-TZ/texts.json"
 PRELOADER = ROOT / "assets/offline-preloader.js"
-WORDS = {
+ORDINALS = {
     1: "kwanza", 2: "pili", 3: "tatu", 4: "nne", 5: "tano", 6: "sita",
     7: "saba", 8: "nane", 9: "tisa", 10: "kumi", 11: "kumi na moja", 12: "kumi na mbili",
+}
+CARDINALS = {
+    1: "moja", 2: "mbili", 3: "tatu", 4: "nne", 5: "tano", 6: "sita",
+    7: "saba", 8: "nane", 9: "tisa", 10: "kumi", 11: "kumi na moja", 12: "kumi na mbili",
+}
+
+# These labels introduce instructions for a task or exercise, not questions.
+STEP_LABELS = {
+    "pg057_n0003": 7, "pg057_n0006": 8, "pg057_n0009": 9,
+    "pg057_n0012": 10, "pg057_n0015": 11, "pg057_n0018": 12,
+    "pg071_n0006": 1, "pg071_n0009": 2, "pg071_n0012": 3,
+    "pg071_n0028": 4, "pg071_n0045": 5,
+    "pg072_n0006": 6, "pg072_n0009": 7, "pg072_n0012": 8,
 }
 
 texts = json.loads(TEXTS.read_text())
@@ -21,14 +34,24 @@ audio = json.loads((ROOT / "content/i18n/sw-TZ/audios.json").read_text())
 changed = {}
 for text_id, value in texts.items():
     match = re.fullmatch(r"\s*(\d+)[.)]\s*", value)
-    if match and text_id in audio and int(match.group(1)) in WORDS:
-        changed[text_id] = f"Swali la {WORDS[int(match.group(1))]}"
+    if match and text_id in audio and int(match.group(1)) in CARDINALS:
+        changed[text_id] = f"Swali namba {CARDINALS[int(match.group(1))]}"
+
+for text_id, value in texts.items():
+    base_id = text_id.removesuffix("_easy_read")
+    if base_id in STEP_LABELS:
+        changed[text_id] = f"Hatua ya {ORDINALS[STEP_LABELS[base_id]]}"
+        continue
+    for number, ordinal in ORDINALS.items():
+        if value == f"Swali la {ordinal}":
+            changed[text_id] = f"Swali namba {CARDINALS[number]}"
+            break
 
 # Include labels already converted during an earlier run so the offline audio
 # cache can always be repaired idempotently.
 numbered_label_ids = {
     text_id for text_id, value in texts.items()
-    if text_id in audio and value.startswith("Swali la ")
+    if text_id in audio and (value.startswith("Swali namba ") or value.startswith("Hatua ya "))
 }
 
 for text_id, value in changed.items():
