@@ -39726,8 +39726,6 @@ function useAtomValueWithDelay<Value>(
     const slMode = useAtomValue(signLanguageModeAtom);
     const setSlMode = useSetAtom(signLanguageModeAtom);
     const videoFilename = useAtomValue(currentPageSignLanguageVideoAtom);
-    const activeMedia = useAtomValue(activeMediaAtom);
-    const setActiveMedia = useSetAtom(activeMediaAtom);
     const lang = useAtomValue(currentLanguageAtom);
     const isMobile = useIsMobile();
     const { t } = useTranslation();
@@ -39741,10 +39739,6 @@ function useAtomValueWithDelay<Value>(
     (0, import_react14.useEffect)(() => {
       setAspectRatio(null);
     }, [src]);
-    (0, import_react14.useEffect)(() => {
-      if (activeMedia !== "tts") return;
-      videoRef.current?.pause();
-    }, [activeMedia]);
     if (src === null) return null;
     const positioned = position !== null;
     const baseWidth = 320;
@@ -39865,7 +39859,6 @@ function useAtomValueWithDelay<Value>(
                   setAspectRatio(v2.videoWidth / v2.videoHeight);
                 }
               },
-              onPlay: () => setActiveMedia("sign-language"),
               style: { height: videoHeight },
               className: "w-full object-contain bg-black"
             },
@@ -43873,19 +43866,6 @@ function useAtomValueWithDelay<Value>(
       setIsPlaying(false);
       setCurrentIndex(0);
     }, [readAloudMode, stopAndClear, setIsPlaying, setCurrentIndex]);
-    (0, import_react21.useEffect)(() => {
-      if (activeMedia !== "sign-language") return;
-      stopAndClear();
-      setIsPlaying(false);
-      setCurrentIndex(0);
-      setReadAloudMode(false);
-    }, [
-      activeMedia,
-      stopAndClear,
-      setIsPlaying,
-      setCurrentIndex,
-      setReadAloudMode
-    ]);
     (0, import_react21.useEffect)(() => {
       if (audioRef.current) audioRef.current.playbackRate = speed;
     }, [speed]);

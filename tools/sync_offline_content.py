@@ -20,8 +20,10 @@ def main() -> None:
     inline = json.loads(source[start:end])
 
     json_resources = [
+        "assets/config.json",
         "content/i18n/sw-TZ/texts.json",
         "content/i18n/sw-TZ/audios.json",
+        "content/i18n/sw-TZ/videos.json",
     ]
     for resource in json_resources:
         key = f"./{resource}"
@@ -30,7 +32,7 @@ def main() -> None:
 
     serialized = json.dumps(inline, ensure_ascii=False, separators=(",", ":"))
     PRELOADER.write_text(source[:start] + serialized + source[end:])
-    print("Synchronized offline texts and audio mappings.")
+    print("Synchronized offline configuration and localized media mappings.")
 
 
 if __name__ == "__main__":
