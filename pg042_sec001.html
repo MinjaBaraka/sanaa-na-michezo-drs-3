@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg042_sec001" />
     <meta name="page-section-id" content="42" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -35,23 +43,23 @@
 
         <ul class="mt-2 space-y-2 sm:space-y-1 pl-0 text-[#2d2a2a] text-[1.1rem] sm:text-[1.45rem] lg:text-[1.55rem] leading-[1.5]">
           <li class="flex items-start gap-3">
-            <span data-id="pg042_n0013" class="w-14 sm:w-16 shrink-0">(i)</span>
+            <span class="w-14 sm:w-16 shrink-0" aria-hidden="true">(i)</span><span data-id="pg042_n0013" class="sr-only">Namba za kirumi moja.</span>
             <span data-id="pg042_n0014">Udongo wa mfinyanzi;</span>
           </li>
           <li class="flex items-start gap-3">
-            <span data-id="pg042_n0016" class="w-14 sm:w-16 shrink-0">(ii)</span>
+            <span class="w-14 sm:w-16 shrink-0" aria-hidden="true">(ii)</span><span data-id="pg042_n0016" class="sr-only">Namba za kirumi mbili.</span>
             <span data-id="pg042_n0017">Maji;</span>
           </li>
           <li class="flex items-start gap-3">
-            <span data-id="pg042_n0019" class="w-14 sm:w-16 shrink-0">(iii)</span>
+            <span class="w-14 sm:w-16 shrink-0" aria-hidden="true">(iii)</span><span data-id="pg042_n0019" class="sr-only">Namba za kirumi tatu.</span>
             <span data-id="pg042_n0020">Ubao;</span>
           </li>
           <li class="flex items-start gap-3">
-            <span data-id="pg042_n0022" class="w-14 sm:w-16 shrink-0">(iv)</span>
+            <span class="w-14 sm:w-16 shrink-0" aria-hidden="true">(iv)</span><span data-id="pg042_n0022" class="sr-only">Namba za kirumi nne.</span>
             <span data-id="pg042_n0023">Kipande cha karatasi; na</span>
           </li>
           <li class="flex items-start gap-3">
-            <span aria-hidden="true" class="w-14 sm:w-16 shrink-0">(v)</span><span data-id="pg042_n0025_read" class="sr-only">Kipengele cha tano</span>
+            <span aria-hidden="true" class="w-14 sm:w-16 shrink-0">(v)</span><span data-id="pg042_n0025_read" class="sr-only">Namba za kirumi tano.</span>
             <span data-id="pg042_n0026">Chekeche.</span>
           </li>
         </ul>
@@ -82,8 +90,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

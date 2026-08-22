@@ -60,7 +60,7 @@ ROMAN_CARDINALS = {
     "ix": "tisa",
     "x": "kumi",
 }
-OPTION_LETTER_NAMES = {"a": "a", "b": "be", "c": "si", "d": "di"}
+OPTION_LETTER_NAMES = {letter: letter for letter in "abcdefghij"}
 
 
 def speech_text(text: str) -> str:
@@ -83,26 +83,27 @@ def speech_text(text: str) -> str:
         expanded,
         flags=re.IGNORECASE,
     )
-    # Read answer labels as question items. In particular, C must not be read
-    # as the Roman numeral one hundred.
+    # Read alphabetic labels as Swahili letters. Contextual marker
+    # normalization has already converted true Roman numerals before this
+    # point, so a standalone `(i)` is never guessed to be Roman here.
     expanded = re.sub(
-        r"^\s*\(?([a-d])\)?\.?\s*",
-        lambda match: f"Kipengele cha {OPTION_LETTER_NAMES[match.group(1).lower()]}. ",
+        r"^\s*(?:\(([a-j])\)|([a-j])\.)\s*",
+        lambda match: f"Herufi {OPTION_LETTER_NAMES[(match.group(1) or match.group(2)).lower()]}. ",
         expanded,
         flags=re.IGNORECASE,
     )
     expanded = re.sub(
         r"\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)\s*(?:[–-]|dash|hadi|mpaka)\s*\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)",
         lambda match: (
-            f"namba ya Kirumi namba {ROMAN_CARDINALS[match.group(1).lower()]} "
-            f"mpaka namba ya Kirumi namba {ROMAN_CARDINALS[match.group(2).lower()]}"
+            f"Namba za kirumi {ROMAN_CARDINALS[match.group(1).lower()]} "
+            f"hadi namba za kirumi {ROMAN_CARDINALS[match.group(2).lower()]}"
         ),
         expanded,
         flags=re.IGNORECASE,
     )
     return re.sub(
         r"\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)\s*",
-        lambda match: f"Namba ya Kirumi namba {ROMAN_CARDINALS[match.group(1).lower()]}. ",
+        lambda match: f"Namba za kirumi {ROMAN_CARDINALS[match.group(1).lower()]}. ",
         expanded,
         flags=re.IGNORECASE,
     )
@@ -140,6 +141,17 @@ async def main() -> int:
         action="append",
         metavar="TEXT_ID",
         help="Generate one text ID only. Can repeat.",
+    )
+    parser.add_argument(
+        "--ids-file",
+        type=Path,
+        help="JSON array of text IDs to generate (for audited narration batches).",
+    )
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=1,
+        help="Number of Rehema requests to generate in parallel (default: 1).",
     )
     parser.add_argument(
         "--contains",
@@ -205,6 +217,13 @@ async def main() -> int:
         if missing:
             print(f"Error: no audio matches: {', '.join(sorted(missing))}", file=sys.stderr)
             return 2
+    if args.ids_file:
+        wanted = set(json.loads(args.ids_file.read_text()))
+        jobs = [job for job in jobs if job[0] in wanted]
+        missing = wanted - {job[0] for job in jobs}
+        if missing:
+            print(f"Error: no audio matches: {', '.join(sorted(missing))}", file=sys.stderr)
+            return 2
     if args.contains:
         needles = [needle.casefold() for needle in args.contains]
         jobs = [job for job in jobs if all(needle in job[2].casefold() for needle in needles)]
@@ -237,10 +256,18 @@ async def main() -> int:
 
     audio_directory = ROOT / "content/i18n" / LANGUAGE / "audio"
 
-    for index, (_, filename, text) in enumerate(jobs, start=1):
-        destination = audio_directory / filename
-        await synthesize(text, destination)
-        print(f"[{index}/{len(jobs)}] {filename}")
+    concurrency = max(1, args.concurrency)
+    semaphore = asyncio.Semaphore(concurrency)
+
+    async def generate(index: int, filename: str, text: str) -> None:
+        async with semaphore:
+            await synthesize(text, audio_directory / filename)
+            print(f"[{index}/{len(jobs)}] {filename}")
+
+    await asyncio.gather(*(
+        generate(index, filename, text)
+        for index, (_, filename, text) in enumerate(jobs, start=1)
+    ))
     return 0
 
 

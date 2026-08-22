@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg018_sec001" />
     <meta name="page-section-id" content="18" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -34,19 +42,19 @@
 
       <div class="space-y-2 sm:space-y-3 mb-10 sm:mb-12 lg:mb-14">
         <div class="grid grid-cols-[auto_1fr] items-start gap-x-3 sm:gap-x-4 adt-body text-zinc-800 leading-relaxed">
-          <span data-id="pg018_n0016">(a)</span>
+          <span aria-hidden="true">(a)</span><span data-id="pg018_n0016" class="sr-only">Herufi a.</span>
           <span data-id="pg018_n0017">Shingo kuwa katika hali ya usawa, bila kuinuka au kuinama;</span>
         </div>
         <div class="grid grid-cols-[auto_1fr] items-start gap-x-3 sm:gap-x-4 adt-body text-zinc-800 leading-relaxed">
-          <span data-id="pg018_n0019">(b)</span>
+          <span aria-hidden="true">(b)</span><span data-id="pg018_n0019" class="sr-only">Herufi b.</span>
           <span data-id="pg018_n0020">Mabega na mikono kulegezwa;</span>
         </div>
         <div class="grid grid-cols-[auto_1fr] items-start gap-x-3 sm:gap-x-4 adt-body text-zinc-800 leading-relaxed">
-          <span data-id="pg018_n0022">(c)</span>
+          <span aria-hidden="true">(c)</span><span data-id="pg018_n0022" class="sr-only">Herufi c.</span>
           <span data-id="pg018_n0023">Kifua na tumbo kutokubana; na</span>
         </div>
         <div class="grid grid-cols-[auto_1fr] items-start gap-x-3 sm:gap-x-4 adt-body text-zinc-800 leading-relaxed">
-          <span data-id="pg018_n0025">(d)</span>
+          <span aria-hidden="true">(d)</span><span data-id="pg018_n0025" class="sr-only">Herufi d.</span>
           <span data-id="pg018_n0026">Miguu kuachana kidogo bila kufungana.</span>
         </div>
       </div>
@@ -68,8 +76,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

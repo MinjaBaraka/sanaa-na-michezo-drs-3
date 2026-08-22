@@ -163,6 +163,7 @@
     --default-mono-font-family: var(--font-mono);
   }
 }
+
 @layer base {
   *, ::after, ::before, ::backdrop, ::file-selector-button {
     box-sizing: border-box;
@@ -11886,9 +11887,9 @@ span[data-word-index].bg-yellow-300 span {
 .tts-active-block {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  box-shadow: 0 0 0 2px #2563eb;
+  box-shadow: 0 0 0 2px #eab308;
   border-radius: 6px;
-  background-color: rgba(37, 99, 235, 0.04);
+  background-color: #fef08a;
   transition: box-shadow 200ms ease, background-color 200ms ease;
 }
 @layer utilities {

@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg064_sec001" />
     <meta name="page-section-id" content="64" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -58,8 +66,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

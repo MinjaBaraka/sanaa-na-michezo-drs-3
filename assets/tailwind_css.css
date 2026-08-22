@@ -189,8 +189,8 @@ span[data-word-index].bg-yellow-300 span {
 /*
  * Per-sentence ("block") highlight — used when the user has the word-level
  * toggle off, or when the target element can't host inline word spans
- * (img, input, textarea, select). Matches the studio's "PREVIEW: PER-SENTENCE"
- * visual: a rounded blue outline around the whole text unit.
+ * (img, input, textarea, select). It uses a steady yellow marker for the
+ * whole text unit, making the spoken sentence easy to follow without flashing.
  *
  * `box-decoration-break: clone` is the key bit: book content wraps `[data-id]`
  * sentences in `<span>` tags that often break across lines. Without `clone`,
@@ -202,9 +202,9 @@ span[data-word-index].bg-yellow-300 span {
 .tts-active-block {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  box-shadow: 0 0 0 2px #2563eb; /* blue-600 */
+  box-shadow: 0 0 0 2px #eab308; /* yellow-500 */
   border-radius: 6px;
-  background-color: rgba(37, 99, 235, 0.04);
+  background-color: #fef08a; /* yellow-200 */
   transition: box-shadow 200ms ease, background-color 200ms ease;
 }
 

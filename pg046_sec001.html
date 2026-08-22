@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg046_sec001" />
     <meta name="page-section-id" content="46" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -26,27 +34,27 @@
       <div class="mb-12 pt-2">
         <div class="space-y-2 text-2xl sm:text-[2rem] lg:text-[2.15rem] leading-snug text-neutral-800">
           <div class="flex items-start gap-3 sm:gap-5">
-            <span class="w-14 shrink-0" data-id="pg046_n0007">(a)</span>
+            <span class="w-14 shrink-0" aria-hidden="true">(a)</span><span data-id="pg046_n0007" class="sr-only">Herufi a.</span>
             <span data-id="pg046_n0008">Kukuza ubunifu;</span>
           </div>
           <div class="flex items-start gap-3 sm:gap-5">
-            <span class="w-14 shrink-0" data-id="pg046_n0010">(b)</span>
+            <span class="w-14 shrink-0" aria-hidden="true">(b)</span><span data-id="pg046_n0010" class="sr-only">Herufi b.</span>
             <span data-id="pg046_n0011">Kupata kipato;</span>
           </div>
           <div class="flex items-start gap-3 sm:gap-5">
-            <span class="w-14 shrink-0" data-id="pg046_n0013">(c)</span>
+            <span class="w-14 shrink-0" aria-hidden="true">(c)</span><span data-id="pg046_n0013" class="sr-only">Herufi c.</span>
             <span data-id="pg046_n0014">Kutengeneza vyombo na mapambo;</span>
           </div>
           <div class="flex items-start gap-3 sm:gap-5">
-            <span class="w-14 shrink-0" data-id="pg046_n0016">(d)</span>
+            <span class="w-14 shrink-0" aria-hidden="true">(d)</span><span data-id="pg046_n0016" class="sr-only">Herufi d.</span>
             <span data-id="pg046_n0017">Kutunza kumbukumbu;</span>
           </div>
           <div class="flex items-start gap-3 sm:gap-5">
-            <span class="w-14 shrink-0" data-id="pg046_n0019">(e)</span>
+            <span class="w-14 shrink-0" aria-hidden="true">(e)</span><span data-id="pg046_n0019" class="sr-only">Herufi e.</span>
             <span data-id="pg046_n0020">Kuonesha utamaduni wa jamii; na</span>
           </div>
           <div class="flex items-start gap-3 sm:gap-5">
-            <span class="w-14 shrink-0" data-id="pg046_n0022">(f)</span>
+            <span class="w-14 shrink-0" aria-hidden="true">(f)</span><span data-id="pg046_n0022" class="sr-only">Herufi f.</span>
             <span data-id="pg046_n0023">Kufikisha ujumbe katika jamii.</span>
           </div>
         </div>
@@ -102,8 +110,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

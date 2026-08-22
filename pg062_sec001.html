@@ -7,7 +7,7 @@
   <title>Sanaa na Michezo</title>
   <meta name="title-id" content="pg062_sec001" />
   <meta name="page-section-id" content="62" />
-  <link href="./content/tailwind_output.css" rel="stylesheet">
+  <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
   <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
   <link href="./assets/fonts.css?v=2" rel="stylesheet">
   <style>
@@ -65,6 +65,14 @@
       line-height: 1.55;
     }
   </style>
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -74,7 +82,7 @@
       <section data-section-type="activity_other" data-section-id="pg062_sec001" class="max-w-6xl mx-auto">
         <div class="mb-8 space-y-2 text-2xl leading-relaxed text-gray-800"><span data-id="pg062_n0002">atakuwa
             ameshindwa.</span> <span data-id="pg062_n0003">Inabidi atoke na aingie mwingine kucheza; na</span><span
-            class="block" data-id="pg062_n0004">(vii) Mchezo huu huchezwa kwa kupokezana.</span></div>
+            class="block" aria-hidden="true">(vii) Mchezo huu huchezwa kwa kupokezana.</span><span data-id="pg062_n0004" class="sr-only">Namba za kirumi saba. Mchezo huu huchezwa kwa kupokezana.</span></div>
         <h1 class="text-5xl font-bold mb-4 text-amber-700" data-id="pg062_n0006">Kazi ya kufanya namba 2</h1>
         <div class="bg-amber-50 rounded-xl p-4 mb-8 border border-amber-200">
           <div class="flex items-center gap-4 mb-4"><img src="images/pg062_im001.png"
@@ -118,8 +126,8 @@
   </script>
   <script src="./assets/offline-preloader.js?v=5"></script>
   <script src="./assets/scorm.js"></script>
-  <script src="./assets/hide-submit-buttons.js?v=2"></script>
-  <script src="./assets/base.bundle.local.js?v=10"></script>
+  <script src="./assets/hide-submit-buttons.js?v=9"></script>
+  <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg026_sec001" />
     <meta name="page-section-id" content="26" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -52,9 +60,9 @@
 
       <div class="rounded-b-2xl rounded-tr-none border border-lime-400 border-t-0 bg-lime-50 px-4 sm:px-8 pt-6 sm:pt-7 pb-6 sm:pb-8 text-neutral-800">
         <div class="space-y-2 sm:space-y-3 text-[1.25rem] sm:text-[1.5rem] leading-[1.5] sm:leading-[1.55] italic">
-          <p data-id="pg026_n0016">(a) Tafuta kipande kidogo cha bomba la plastiki, jani la mpapai, mti wa mwanzi au mnyonyo.</p>
-          <p data-id="pg026_n0018">(b) Tengeneza filimbi kwa kutoboa matundu madogo madogo kama inavyoonekana katika picha kwenye Kielelezo namba 1.</p>
-          <p data-id="pg026_n0020">(c) Fanya zoezi la kupuliza filimbi uliyotengeneza.</p>
+          <p aria-hidden="true">(a) Tafuta kipande kidogo cha bomba la plastiki, jani la mpapai, mti wa mwanzi au mnyonyo.</p><span data-id="pg026_n0016" class="sr-only">Herufi a. Tafuta kipande kidogo cha bomba la plastiki, jani la mpapai, mti wa mwanzi au mnyonyo.</span>
+          <p aria-hidden="true">(b) Tengeneza filimbi kwa kutoboa matundu madogo madogo kama inavyoonekana katika picha kwenye Kielelezo namba 1.</p><span data-id="pg026_n0018" class="sr-only">Herufi b. Tengeneza filimbi kwa kutoboa matundu madogo madogo kama inavyoonekana katika picha kwenye Kielelezo namba 1.</span>
+          <p aria-hidden="true">(c) Fanya zoezi la kupuliza filimbi uliyotengeneza.</p><span data-id="pg026_n0020" class="sr-only">Herufi c. Fanya zoezi la kupuliza filimbi uliyotengeneza.</span>
         </div>
       </div>
     </div>
@@ -70,8 +78,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg009_sec001" />
     <meta name="page-section-id" content="9" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -31,15 +39,15 @@
         <span data-id="pg009_n0006">Kuna mambo ya kuzingatia katika kuigiza, ambayo ni:</span>
       </p>
       <ul class="mt-1 space-y-1.5 md:space-y-1 text-stone-800">
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0009" class="shrink-0">(a)</span><span data-id="pg009_n0010" class="flex-1">Kuwepo kwa watendaji;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0012" class="shrink-0">(b)</span><span data-id="pg009_n0013" class="flex-1">Kuwepo kwa watazamaji;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0015" class="shrink-0">(c)</span><span data-id="pg009_n0016" class="flex-1">Kuwepo kwa eneo la kuigizia;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0018" class="shrink-0">(d)</span><span data-id="pg009_n0019" class="flex-1">Kutoa sauti inayosikika vizuri;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0021" class="shrink-0">(e)</span><span data-id="pg009_n0022" class="flex-1">Kuonesha matendo ya kiishara na mkao wa mwili;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0024" class="shrink-0">(f)</span><span data-id="pg009_n0025" class="flex-1">Kutumia vizuri vifaa na maleba;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0027" class="shrink-0">(g)</span><span data-id="pg009_n0028" class="flex-1">Kutumia vizuri mapambo;</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0030" class="shrink-0">(h)</span><span data-id="pg009_n0031" class="flex-1">Kutumia vizuri jukwaa; na</span></li>
-        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span data-id="pg009_n0033" class="shrink-0">(i)</span><span data-id="pg009_n0034" class="flex-1">Kutoa ujumbe kwa usahihi.</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(a)</span><span data-id="pg009_n0009" class="sr-only">Herufi a.</span><span data-id="pg009_n0010" class="flex-1">Kuwepo kwa watendaji;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(b)</span><span data-id="pg009_n0012" class="sr-only">Herufi b.</span><span data-id="pg009_n0013" class="flex-1">Kuwepo kwa watazamaji;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(c)</span><span data-id="pg009_n0015" class="sr-only">Herufi c.</span><span data-id="pg009_n0016" class="flex-1">Kuwepo kwa eneo la kuigizia;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(d)</span><span data-id="pg009_n0018" class="sr-only">Herufi d.</span><span data-id="pg009_n0019" class="flex-1">Kutoa sauti inayosikika vizuri;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(e)</span><span data-id="pg009_n0021" class="sr-only">Herufi e.</span><span data-id="pg009_n0022" class="flex-1">Kuonesha matendo ya kiishara na mkao wa mwili;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(f)</span><span data-id="pg009_n0024" class="sr-only">Herufi f.</span><span data-id="pg009_n0025" class="flex-1">Kutumia vizuri vifaa na maleba;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(g)</span><span data-id="pg009_n0027" class="sr-only">Herufi g.</span><span data-id="pg009_n0028" class="flex-1">Kutumia vizuri mapambo;</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(h)</span><span data-id="pg009_n0030" class="sr-only">Herufi h.</span><span data-id="pg009_n0031" class="flex-1">Kutumia vizuri jukwaa; na</span></li>
+        <li class="flex items-start gap-3 md:gap-4 adt-body leading-snug text-[1.15rem] sm:text-[1.3rem] md:text-[1.42rem]"><span class="shrink-0" aria-hidden="true">(i)</span><span data-id="pg009_n0033" class="sr-only">Herufi i.</span><span data-id="pg009_n0034" class="flex-1">Kutoa ujumbe kwa usahihi.</span></li>
       </ul>
     </div>
 
@@ -54,8 +62,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg037_sec001" />
     <meta name="page-section-id" content="37" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -18,12 +26,12 @@
   <h1 class="adt-h2 text-sky-500 font-extrabold mb-4 text-left" data-id="pg037_n0002">Vifaa vya asili vya kuchorea</h1>
   <p class="adt-body text-zinc-800 leading-relaxed mb-4 text-left"><span data-id="pg037_n0004">Vifuatavyo ni vifaa vya asili ambavyo hutumika kuchora picha kwa kutumia penseli:</span></p>
   <ul class="mb-10 space-y-2 pl-0">
-    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" data-id="pg037_n0007">(a) Penseli;</li>
-    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" data-id="pg037_n0009">(b) Karatasi;</li>
-    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" data-id="pg037_n0011">(c) Kifutio;</li>
-    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" data-id="pg037_n0013">(d) Meza na stuli;</li>
-    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" data-id="pg037_n0015">(e) Kibao cha kuchorea; na</li>
-    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" data-id="pg037_n0017">(f) Kibanio cha karatasi.</li>
+    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" aria-hidden="true">(a) Penseli;</li><span data-id="pg037_n0007" class="sr-only">Herufi a. Penseli;</span>
+    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" aria-hidden="true">(b) Karatasi;</li><span data-id="pg037_n0009" class="sr-only">Herufi b. Karatasi;</span>
+    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" aria-hidden="true">(c) Kifutio;</li><span data-id="pg037_n0011" class="sr-only">Herufi c. Kifutio;</span>
+    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" aria-hidden="true">(d) Meza na stuli;</li><span data-id="pg037_n0013" class="sr-only">Herufi d. Meza na stuli;</span>
+    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" aria-hidden="true">(e) Kibao cha kuchorea; na</li><span data-id="pg037_n0015" class="sr-only">Herufi e. Kibao cha kuchorea; na</span>
+    <li class="adt-body text-zinc-800 leading-relaxed list-none text-left" aria-hidden="true">(f) Kibanio cha karatasi.</li><span data-id="pg037_n0017" class="sr-only">Herufi f. Kibanio cha karatasi.</span>
   </ul>
 
   <h2 class="adt-h2 text-sky-500 font-extrabold mb-4 text-left" data-id="pg037_n0019">Mambo ya kuzingatia katika uchoraji wa picha kwa kutumia penseli</h2>
@@ -42,8 +50,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

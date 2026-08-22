@@ -7,12 +7,42 @@
     const style = document.createElement("style");
     style.id = "pdf-source-typography";
     style.textContent = `
-      @media (min-width: 640px) {
+      /* Keep the reading canvas consistent with pg020 across the book. */
+      @media (min-width: 768px) {
+        #content > section[data-section-type] {
+          box-sizing: border-box !important;
+          width: min(calc(100% - 3rem), 972px) !important;
+          max-width: 972px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        #content > section[data-section-type="activity_other"] [class*="max-w-[560px]"],
+        #content > section[data-section-type="activity_other"] [class*="max-w-[620px]"],
+        #content > section[data-section-type] [class*="max-w-[820px]"],
+        #content > section[data-section-type] [class*="max-w-[830px]"],
+        #content > section[data-section-type] [class*="max-w-[850px]"] {
+          box-sizing: border-box !important;
+          width: 100% !important;
+          max-width: 938px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        /* Generated pages with px-14/px-16 create the oversized gutters seen on pg017. */
+        #content > section[data-section-type] [class*="md:px-14"],
+        #content > section[data-section-type] [class*="md:px-16"],
+        #content > section[data-section-type] [class*="lg:px-14"],
+        #content > section[data-section-type] [class*="lg:px-16"] {
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
+        }
+      }
+
+      @media (min-width: 768px) {
         #content :where(p, li, td, th, legend, label),
         #content :where([data-id]):not(h1):not(h2):not(h3):not(img):not(.sr-only),
         #content span[aria-hidden="true"]:not([class*="fa-"]) {
-          font-size: 1rem !important;
-          line-height: 1.5 !important;
+          font-size: 1.35rem !important;
+          line-height: 1.55 !important;
         }
         #content :where(p, li, td, th, legend, label) :where(span:not(.sr-only), strong, em) {
           font-size: inherit !important;
@@ -36,8 +66,8 @@
           font-size: 1.2rem !important;
         }
         #content .adt-body {
-          font-size: 1rem !important;
-          line-height: 1.5 !important;
+          font-size: 1.35rem !important;
+          line-height: 1.55 !important;
         }
       }
     `;

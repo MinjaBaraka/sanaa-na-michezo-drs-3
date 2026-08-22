@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg061_sec001" />
     <meta name="page-section-id" content="61" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -34,40 +42,40 @@
 
       <div class="space-y-4 sm:space-y-5 text-left text-zinc-800">
         <p class="adt-body leading-relaxed">
-          <span data-id="pg061_n0009">(i)</span>
+          <span aria-hidden="true">(i)</span><span data-id="pg061_n0009" class="sr-only">Namba za kirumi moja.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0010">Kuwe na wachezaji wawili wa kurusha mpira.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0011">Mmoja asimame upande wa kulia na mwingine kushoto;</span>
         </p>
         <p class="adt-body leading-relaxed">
-          <span data-id="pg061_n0013">(ii)</span>
+          <span aria-hidden="true">(ii)</span><span data-id="pg061_n0013" class="sr-only">Namba za kirumi mbili.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0014">Mchezaji wa tatu awe katikati yao.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0015">Chupa na mchanga uliokusanywa vyote viwe katikati;</span>
         </p>
         <p class="adt-body leading-relaxed">
-          <span data-id="pg061_n0017">(iii)</span>
+          <span aria-hidden="true">(iii)</span><span data-id="pg061_n0017" class="sr-only">Namba za kirumi tatu.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0018">Mpira ukirushwa kutoka upande mmoja kwenda upande wa pili utamlenga mchezaji wa katikati ambaye atatakiwa kuukwepa.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0019">Lengo ni aweze kujaza mchanga kwenye chupa;</span>
         </p>
         <p class="adt-body leading-relaxed">
-          <span data-id="pg061_n0021">(iv)</span>
+          <span aria-hidden="true">(iv)</span><span data-id="pg061_n0021" class="sr-only">Namba za kirumi nne.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0022">Mchezaji wa katikati akiudaka mpira, ataurusha mbali.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0023">Kurusha mbali kutampa muda wa kujaza mchanga hadi chupa ijae;</span>
         </p>
         <p class="adt-body leading-relaxed">
-          <span data-id="pg061_n0025">(v)</span>
+          <span aria-hidden="true">(v)</span><span data-id="pg061_n0025" class="sr-only">Namba za kirumi tano.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0026">Akijaza bila kupigwa na mpira atakuwa ameshinda;</span>
         </p>
         <p class="adt-body leading-relaxed">
-          <span data-id="pg061_n0028">(vi)</span>
+          <span aria-hidden="true">(vi)</span><span data-id="pg061_n0028" class="sr-only">Namba za kirumi sita.</span>
           <span aria-hidden="true"> </span>
           <span data-id="pg061_n0029">Akipigwa na mpira kabla chupa haijajaa mchanga</span>
         </p>
@@ -85,8 +93,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

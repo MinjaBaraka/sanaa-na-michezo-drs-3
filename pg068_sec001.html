@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg068_sec001" />
     <meta name="page-section-id" content="68" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -58,13 +66,13 @@
           <div class="px-5 pb-5 pt-4 sm:px-6 sm:pb-6 lg:px-8">
             <ul class="space-y-3 sm:space-y-2">
               <li class="adt-body text-slate-800 leading-relaxed">
-                <span data-id="pg068_n0017" class="inline-block w-12 sm:w-14 font-medium align-top">(a)</span><span data-id="pg068_n0018" class="inline-block align-top max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-3.5rem)]">Namna ya kushiriki maonesho ya sanaa</span>
+                <span class="inline-block w-12 sm:w-14 font-medium align-top" aria-hidden="true">(a)</span><span data-id="pg068_n0017" class="sr-only">Herufi a.</span><span data-id="pg068_n0018" class="inline-block align-top max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-3.5rem)]">Namna ya kushiriki maonesho ya sanaa</span>
               </li>
               <li class="adt-body text-slate-800 leading-relaxed">
-                <span data-id="pg068_n0020" class="inline-block w-12 sm:w-14 font-medium align-top">(b)</span><span data-id="pg068_n0021" class="inline-block align-top max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-3.5rem)]">Namna ya kushiriki mashindano ya michezo</span>
+                <span class="inline-block w-12 sm:w-14 font-medium align-top" aria-hidden="true">(b)</span><span data-id="pg068_n0020" class="sr-only">Herufi b.</span><span data-id="pg068_n0021" class="inline-block align-top max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-3.5rem)]">Namna ya kushiriki mashindano ya michezo</span>
               </li>
               <li class="adt-body text-slate-800 leading-relaxed">
-                <span data-id="pg068_n0023" class="inline-block w-12 sm:w-14 font-medium align-top">(c)</span><span data-id="pg068_n0024" class="inline-block align-top max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-3.5rem)]">Mambo ya kuzingatia katika maonesho ya sanaa na mashindano ya michezo</span>
+                <span class="inline-block w-12 sm:w-14 font-medium align-top" aria-hidden="true">(c)</span><span data-id="pg068_n0023" class="sr-only">Herufi c.</span><span data-id="pg068_n0024" class="inline-block align-top max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-3.5rem)]">Mambo ya kuzingatia katika maonesho ya sanaa na mashindano ya michezo</span>
               </li>
             </ul>
           </div>
@@ -79,8 +87,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

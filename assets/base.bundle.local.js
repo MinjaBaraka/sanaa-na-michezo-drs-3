@@ -43644,6 +43644,7 @@ function useAtomValueWithDelay<Value>(
     const [currentIndex, setCurrentIndex] = useAtom(currentAudioIndexAtom);
     const activeMedia = useAtomValue(activeMediaAtom);
     const setActiveMedia = useSetAtom(activeMediaAtom);
+    const bundleVersion = useAtomValue(appConfigAtom).bundleVersion;
     const audioFiles = useAtomValue(audioFilesAtom);
     const translations = useAtomValue(translationsAtom);
     const language = useAtomValue(currentLanguageAtom);
@@ -43682,9 +43683,8 @@ function useAtomValueWithDelay<Value>(
     const setupHighlight = (0, import_react21.useCallback)(
       (item, audio) => {
         teardownActive();
-        // Keep read-aloud visually calm: a moving word/block highlight can look
-        // like flashing and makes it harder to follow the narration.
-        return;
+        // The default is a steady sentence-level highlight. This lets readers
+        // follow the narration without the distracting word-by-word flashing.
         const text = item.el.textContent ?? "";
         const precise = timecodeMap[item.id];
         const useWord = wordHighlightModeRef.current && elementSupportsWordHighlight(item.el) && !(item.useBlockWhenMissingTimecodes && !precise);
@@ -43726,7 +43726,7 @@ function useAtomValueWithDelay<Value>(
           return;
         }
         const item = items[index2];
-        const url = `./content/i18n/${language}/audio/${item.filename}`;
+        const url = `./content/i18n/${language}/audio/${item.filename}?v=${encodeURIComponent(bundleVersion ?? "")}`;
         if (!audioRef.current) audioRef.current = new Audio();
         const audio = audioRef.current;
         audio.onended = null;
@@ -43797,6 +43797,7 @@ function useAtomValueWithDelay<Value>(
       [
         items,
         language,
+        bundleVersion,
         setIsPlaying,
         setCurrentIndex,
         setActiveMedia,
@@ -59596,12 +59597,24 @@ ${OPTION_BASE} [${MARK_ATTR}="incorrect"] {
       return raw;
     }
   }
+  function readRuntimeAssetVersion() {
+    if (typeof document === "undefined") return "";
+    const runtimeScript = Array.from(document.scripts).find(
+      (script) => script.src.includes("base.bundle.local.js") || script.src.includes("base.bundle.min.js")
+    );
+    if (!runtimeScript?.src) return "";
+    try {
+      return new URL(runtimeScript.src, document.baseURI).searchParams.get("v") ?? "";
+    } catch {
+      return "";
+    }
+  }
   async function bootRuntime() {
     installShowContentFallback();
     addFavicons();
     const store = getDefaultStore();
     try {
-      const config = await loadAppConfig();
+      const config = await loadAppConfig(readRuntimeAssetVersion());
       store.set(appConfigAtom, config);
       setStorageMode(pickStorageMode(config));
       applyConfiguredSettings(config);

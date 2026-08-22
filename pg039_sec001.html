@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg039_sec001" />
     <meta name="page-section-id" content="39" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -38,12 +46,12 @@
       <h2 class="text-sky-500 font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight mb-2 sm:mb-3" data-id="pg039_n0010">Umuhimu wa uchoraji wa picha</h2>
       <p class="text-zinc-800 text-[20px] sm:text-[26px] lg:text-[28px] leading-snug mb-1 sm:mb-2"><span data-id="pg039_n0012">Picha huchorwa kwa lengo la:</span></p>
       <div class="text-zinc-800 text-[18px] sm:text-[24px] lg:text-[28px] leading-[1.45] space-y-1">
-        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" data-id="pg039_n0015">(a)</span><span data-id="pg039_n0016">Kuuza ili kujipatia kipato;</span></div>
-        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" data-id="pg039_n0018">(b)</span><span data-id="pg039_n0019">Kupamba na kupendezesha sehemu mbalimbali;</span></div>
-        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" data-id="pg039_n0021">(c)</span><span data-id="pg039_n0022">Kuweka kumbukumbu za matukio;</span></div>
-        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" data-id="pg039_n0024">(d)</span><span data-id="pg039_n0025">Kuelimisha na kuburudisha jamii;</span></div>
-        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" data-id="pg039_n0027">(e)</span><span data-id="pg039_n0028">Kumjengea mtu kumbukumbu ya muda mrefu; na</span></div>
-        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" data-id="pg039_n0030">(f)</span><span data-id="pg039_n0031">Kurahisisha jambo kueleweka.</span></div>
+        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" aria-hidden="true">(a)</span><span data-id="pg039_n0015" class="sr-only">Herufi a.</span><span data-id="pg039_n0016">Kuuza ili kujipatia kipato;</span></div>
+        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" aria-hidden="true">(b)</span><span data-id="pg039_n0018" class="sr-only">Herufi b.</span><span data-id="pg039_n0019">Kupamba na kupendezesha sehemu mbalimbali;</span></div>
+        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" aria-hidden="true">(c)</span><span data-id="pg039_n0021" class="sr-only">Herufi c.</span><span data-id="pg039_n0022">Kuweka kumbukumbu za matukio;</span></div>
+        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" aria-hidden="true">(d)</span><span data-id="pg039_n0024" class="sr-only">Herufi d.</span><span data-id="pg039_n0025">Kuelimisha na kuburudisha jamii;</span></div>
+        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" aria-hidden="true">(e)</span><span data-id="pg039_n0027" class="sr-only">Herufi e.</span><span data-id="pg039_n0028">Kumjengea mtu kumbukumbu ya muda mrefu; na</span></div>
+        <div class="flex items-start gap-2 sm:gap-4"><span class="w-8 sm:w-10 shrink-0" aria-hidden="true">(f)</span><span data-id="pg039_n0030" class="sr-only">Herufi f.</span><span data-id="pg039_n0031">Kurahisisha jambo kueleweka.</span></div>
       </div>
     </div>
 
@@ -78,8 +86,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>

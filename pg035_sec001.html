@@ -7,9 +7,17 @@
     <title>Sanaa na Michezo</title>
     <meta name="title-id" content="pg035_sec001" />
     <meta name="page-section-id" content="35" />
-    <link href="./content/tailwind_output.css" rel="stylesheet">
+    <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=2" rel="stylesheet">
+    <style>
+      /* Preserve paragraph flow from the source PDF after text is localized. */
+      #content p [data-id]:not(.sr-only) {
+        display: inline !important;
+        white-space: normal !important;
+        margin-block-end: 0 !important;
+      }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
@@ -78,12 +86,12 @@
                             <div class="px-6 pb-5 pt-9 sm:px-8 sm:pb-6 sm:pt-10 lg:px-10 lg:pt-10">
                                 <p
                                     class="adt-body mb-3 text-left font-normal text-slate-800 sm:text-[1em] lg:text-[1.04em]">
-                                    <span data-id="pg035_n0017">(a) Maana ya picha</span></p>
+                                    <span aria-hidden="true">(a) Maana ya picha</span><span data-id="pg035_n0017" class="sr-only">Herufi a. Maana ya picha</span></p>
                                 <p
                                     class="adt-body mb-3 text-left font-normal text-slate-800 sm:text-[1em] lg:text-[1.04em]">
-                                    <span data-id="pg035_n0019">(b) Umuhimu wa kuchora</span></p>
+                                    <span aria-hidden="true">(b) Umuhimu wa kuchora</span><span data-id="pg035_n0019" class="sr-only">Herufi b. Umuhimu wa kuchora</span></p>
                                 <p class="adt-body text-left font-normal text-slate-800 sm:text-[1em] lg:text-[1.04em]">
-                                    <span data-id="pg035_n0021">(c) Namna ya kuchora picha kwa kutumia penseli</span>
+                                    <span aria-hidden="true">(c) Namna ya kuchora picha kwa kutumia penseli</span><span data-id="pg035_n0021" class="sr-only">Herufi c. Namna ya kuchora picha kwa kutumia penseli</span>
                                 </p>
                             </div>
                         </aside>
@@ -113,8 +121,8 @@
     <div class="relative z-50" id="nav-container"></div>
     <script src="./assets/offline-preloader.js?v=5"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=2"></script>
-    <script src="./assets/base.bundle.local.js?v=10"></script>
+    <script src="./assets/hide-submit-buttons.js?v=9"></script>
+    <script src="./assets/base.bundle.local.js?v=36"></script>
 </body>
 
 </html>
