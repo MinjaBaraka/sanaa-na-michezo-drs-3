@@ -7,15 +7,22 @@
   <title>Sanaa na Michezo</title>
   <meta name="title-id" content="pg078_sec001" />
   <meta name="page-section-id" content="78" />
-  <link href="./content/tailwind_output.css?v=6" rel="stylesheet">
+  <link href="./content/tailwind_output.css?v=7" rel="stylesheet">
   <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
-  <link href="./assets/fonts.css?v=2" rel="stylesheet">
+  <link href="./assets/fonts.css?v=3" rel="stylesheet">
     <style>
       /* Preserve paragraph flow from the source PDF after text is localized. */
       #content p [data-id]:not(.sr-only) {
         display: inline !important;
         white-space: normal !important;
         margin-block-end: 0 !important;
+      }
+      /* Match the rest of the book: the exported table used heading-size
+         text for ordinary cells, making both the numbers and labels huge. */
+      @media (min-width: 768px) {
+        #content [data-section-id="pg078_sec001"] h1 { font-size: 1.7rem !important; line-height: 1.35 !important; }
+        #content [data-section-id="pg078_sec001"] :is(p, td, th, [data-id]):not(.sr-only) { font-size: 1.15rem !important; line-height: 1.45 !important; }
+        #content [data-section-id="pg078_sec001"] th { font-size: 1.25rem !important; }
       }
     </style>
 </head>
@@ -73,14 +80,12 @@
                   </tr>
                 </table>
                 <div class="sr-only" aria-hidden="true">
-                  <span data-id="pg078_n0015">Orodha A</span>
-                  <span data-id="pg078_n0017">Orodha B</span>
-                  <span data-id="pg078_n0015">Orodha A</span>
+                  <span data-id="pg078_n0015">Orodha A.</span>
                   <span aria-hidden="true">(i) Ala ya kupuliza</span><span data-id="pg078_n0020" class="sr-only">Namba za kirumi moja. Ala ya kupuliza</span>
                   <span aria-hidden="true">(ii) Ala ya kugonga</span><span data-id="pg078_n0025" class="sr-only">Namba za kirumi mbili. Ala ya kugonga</span>
                   <span aria-hidden="true">(iii) Ala ya nyuzi</span><span data-id="pg078_n0030" class="sr-only">Namba za kirumi tatu. Ala ya nyuzi</span>
                   <span aria-hidden="true">(iv) Ala ya kutikisa</span><span data-id="pg078_n0035" class="sr-only">Namba za kirumi nne. Ala ya kutikisa</span>
-                  <span data-id="pg078_n0017">Orodha B</span>
+                  <span data-id="pg078_n0017">Orodha B.</span>
                   <span data-id="pg078_n0022">A. Kayamba</span>
                   <span data-id="pg078_n0027">B. Fidla</span>
                   <span data-id="pg078_n0032">C. Lipenenga</span>
@@ -133,10 +138,10 @@
 
   <div class="relative z-50" id="interface-container"></div>
   <div class="relative z-50" id="nav-container"></div>
-  <script src="./assets/offline-preloader.js?v=5"></script>
+  <script src="./assets/offline-preloader.js?v=30"></script>
   <script src="./assets/scorm.js"></script>
-  <script src="./assets/hide-submit-buttons.js?v=9"></script>
-  <script src="./assets/base.bundle.local.js?v=37"></script>
+  <script src="./assets/hide-submit-buttons.js?v=16"></script>
+  <script src="./assets/base.bundle.local.js?v=43"></script>
 </body>
 
 </html>

@@ -205,7 +205,7 @@ span[data-word-index].bg-yellow-300 span {
   box-shadow: 0 0 0 2px #eab308; /* yellow-500 */
   border-radius: 6px;
   background-color: #fef08a; /* yellow-200 */
-  transition: box-shadow 200ms ease, background-color 200ms ease;
+  transition: none;
 }
 
 /*

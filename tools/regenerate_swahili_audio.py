@@ -60,11 +60,129 @@ ROMAN_CARDINALS = {
     "ix": "tisa",
     "x": "kumi",
 }
-OPTION_LETTER_NAMES = {letter: letter for letter in "abcdefghij"}
+# A bare letter is often swallowed, interpreted as an English token, or (for
+# ``i``) mistaken for a Roman numeral.  These are Tanzanian-Swahili letter
+# names and are used only for synthesis; the visible textbook marker remains
+# unchanged.
+OPTION_LETTER_NAMES = {
+    "a": "a",
+    "b": "be",
+    "c": "che",
+    "d": "de",
+    "e": "e",
+    "f": "efu",
+    "g": "gi",
+    "h": "hech",
+    # Doubling is phonetic only: it makes Rehema retain the Kiswahili /i/
+    # sound instead of interpreting the marker as Roman numeral one.
+    "i": "ii",
+    "j": "je",
+    "k": "ka",
+    "l": "el",
+    "m": "em",
+    "n": "en",
+    "o": "o",
+    "p": "pe",
+    "q": "ku",
+    "r": "er",
+    "s": "es",
+    "t": "te",
+    "u": "u",
+    "v": "ve",
+    "w": "we",
+    "x": "eks",
+    "y": "ye",
+    "z": "zet",
+}
+ALPHABET_LABEL_PATTERN = re.compile(
+    r"(?:\b(?:herufi|kipengele|chaguo|orodha)\s+(?:\(\s*)?[a-z](?=\s|[.)]))"
+    r"|(?:^|\n)\s*(?:\([a-z]\)|[a-z]\.)",
+    flags=re.IGNORECASE,
+)
 
 
 def speech_text(text: str) -> str:
     """Keep visible text intact while expanding symbols for natural speech."""
+    # Guard against common TTS inflection errors without changing the reader's
+    # visible textbook text.
+    text = re.sub(r"\bne\b", "nne", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bshule\s+za\s+misingi\b", "shule za msingi", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bshule\s+ya\s+misingi\b", "shule ya msingi", text, flags=re.IGNORECASE)
+    # Separating the repeated stem keeps Rehema from swallowing the initial
+    # /m/ in “mbalimbali”; the visible textbook text remains unchanged.
+    text = re.sub(r"\bvitu\s+mbalimbali\b", "vitu mbali mbali", text, flags=re.IGNORECASE)
+    # The same repeated-stem issue occurs after “maumbo”; separating it makes
+    # Rehema articulate the initial /m/ in “mbalimbali” clearly.
+    text = re.sub(r"\bmaumbo\s+mbalimbali\b", "maumbo mbali mbali", text, flags=re.IGNORECASE)
+    # Split the consonant cluster only for synthesis so Rehema retains the
+    # /fi/ in “mfinyanzi” and does not stretch “wa”.
+    text = re.sub(
+        r"\budongo\s+wa\s+mfinyanzi\b",
+        "udongo wa mfi nyanzi",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # Keep both the /nj/ onset and every syllable of “mbalimbali” clear in
+    # the “njia mbalimbali” construction.
+    text = re.sub(r"\bnjia\s+mbalimbali\b", "ndjia mbali mbali", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bnjia\s+hizo\b", "ndjia hizo", text, flags=re.IGNORECASE)
+    # A synthesis-only syllable break keeps Rehema from replacing the /ng/
+    # cluster in “vyungu” with /mb/.
+    text = re.sub(r"\bvyungu\b", "vyu ngu", text, flags=re.IGNORECASE)
+    # Keep the /ng/ cluster in “viungo” distinct from /mb/, and give “hayo” a
+    # natural boundary after “mazoezi”.
+    text = re.sub(r"\bmazoezi\s+ya\s+viungo\b", "mazoezi ya vi u ngo", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bmazoezi\s+hayo\b", "mazoezi, hayo", text, flags=re.IGNORECASE)
+    # Separate the English animal name into its two clear sound units for the
+    # Swahili voice; the visible textbook spelling remains “kangaroo”.
+    text = re.sub(r"\bkangaroo\b", "kanga roo", text, flags=re.IGNORECASE)
+    # A brief word boundary keeps the singular “mchezo” from being blended
+    # into the plural-sounding “michezo” before “huu”.
+    text = re.sub(r"\bmchezo\s+huu\b", "mchezo, huu", text, flags=re.IGNORECASE)
+    # Preserve the /p/ in “kukwepa”; Rehema can otherwise blend the cluster
+    # into the unrelated verb “kukweta”.
+    text = re.sub(r"\bkukwepa\b", "ku kwepa", text, flags=re.IGNORECASE)
+    # Preserve the doubled /m/ onset in “mmoja” so it is not expanded into
+    # the incorrect “mumoja”.
+    text = re.sub(r"\bmmoja\b", "mmo ja", text, flags=re.IGNORECASE)
+    # Keep the singular noun intact before “wa rede”; without a boundary the
+    # voice can turn “mchezo” into the plural-sounding “michezo”.
+    text = re.sub(r"\bmchezo\s+wa\s+rede\b", "mchezo, wa rede", text, flags=re.IGNORECASE)
+    # These boundaries protect singular words and ordinal wording that Rehema
+    # otherwise blends or expands incorrectly in the exercise instructions.
+    text = re.sub(r"\bZoezi\s+la\s+2\b", "Zoezi la pili", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bmchezo\s+wa\s+kuchezea\b", "mchezo, wa kuchezea", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bkufanya\s+maandalizi\b", "kufanya, maandalizi", text, flags=re.IGNORECASE)
+    text = re.sub(r"\blitafanyika;\s*na\b", "litafanyika, na", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bmchezo\s+husika\b", "mchezo, husika", text, flags=re.IGNORECASE)
+    # Rehema softens the prenasalized affricate in “njuga” to /ny/.  The
+    # synthesis-only spelling preserves the audible /nj/ while the textbook
+    # continues to display the correct word, “njuga”.
+    text = re.sub(r"\bnjuga\b", "ndjuga", text, flags=re.IGNORECASE)
+    # A micro-pause prevents the voice from stretching the last vowel in
+    # “mti” when it is immediately followed by “chenye”.
+    text = re.sub(r"\bmti\s+(?=chenye\b)", "mti, ", text, flags=re.IGNORECASE)
+    # Domains must be spelled out; passing the dotted form directly to a TTS
+    # engine makes it treat portions as abbreviations or words.  Keep this
+    # before the symbol substitutions so the visible text is never changed.
+    text = re.sub(
+        r"\bwww\.tie\.go\.tz\b",
+        "w w w nukta t i e nukta g o nukta t z",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bdirector\.general@tie\.go\.tz\b",
+        "director nukta general at t i e nukta g o nukta t z",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # The Rehema voice can mistake the English airline name "Air" for a
+    # Swahili letter name. This spelling directs the Swahili voice to the
+    # English /eər/ sound without changing the displayed textbook text.
+    text = re.sub(
+        r"\bAir Tanzania\b", "Eir Tanzania", text, flags=re.IGNORECASE
+    )
     expanded = (
         text.replace("S.L.P", "Sanduku la posta")
         .replace("©", "Hakimiliki ya ")
@@ -72,6 +190,11 @@ def speech_text(text: str) -> str:
         .replace("/", " mkwaju ")
         .replace("-", " dash ")
     )
+    # Official titles and the book publisher's abbreviation are expanded only
+    # for speech; the visible PDF text stays unchanged.
+    expanded = re.sub(r"\bDkt\.\s*", "Daktari ", expanded, flags=re.IGNORECASE)
+    expanded = re.sub(r"\bBw\.\s*", "Bwana ", expanded, flags=re.IGNORECASE)
+    expanded = re.sub(r"\bTET\b", "T E T", expanded)
     # Rehema should pronounce the standalone digit 4 as the full Swahili word.
     # Do not change digits embedded in phone numbers, postcodes, or dates.
     expanded = re.sub(r"(?<!\d)4(?!\d)", "nne", expanded)
@@ -83,21 +206,49 @@ def speech_text(text: str) -> str:
         expanded,
         flags=re.IGNORECASE,
     )
-    # Read alphabetic labels as Swahili letters. Contextual marker
-    # normalization has already converted true Roman numerals before this
-    # point, so a standalone `(i)` is never guessed to be Roman here.
-    expanded = re.sub(
-        r"^\s*(?:\(([a-j])\)|([a-j])\.)\s*",
-        lambda match: f"Herufi {OPTION_LETTER_NAMES[(match.group(1) or match.group(2)).lower()]}. ",
-        expanded,
-        flags=re.IGNORECASE,
-    )
+    # Convert Roman-numeral ranges before treating parenthesized single
+    # letters as alphabet markers.
     expanded = re.sub(
         r"\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)\s*(?:[–-]|dash|hadi|mpaka)\s*\((x|ix|viii|vii|vi|iv|iii|ii|v|i)\)",
         lambda match: (
             f"Namba za kirumi {ROMAN_CARDINALS[match.group(1).lower()]} "
             f"hadi namba za kirumi {ROMAN_CARDINALS[match.group(2).lower()]}"
         ),
+        expanded,
+        flags=re.IGNORECASE,
+    )
+    # All alphabetic labels receive an explicit “Herufi” prefix.  This covers
+    # existing “Herufi a”, answer choices, list items, and identification
+    # labels while leaving ordinary words and people’s initials untouched.
+    expanded = re.sub(
+        r"\bHerufi\s*(?:\(\s*)?([a-z])\s*\)?\.?",
+        lambda match: f"Herufi {OPTION_LETTER_NAMES[match.group(1).lower()] }.",
+        expanded,
+        flags=re.IGNORECASE,
+    )
+    expanded = re.sub(
+        r"\b(Kipengele|Chaguo|Orodha)\s+([a-z])(?=\s|[.:;,)])",
+        lambda match: (
+            f"{match.group(1)} Herufi "
+            f"{OPTION_LETTER_NAMES[match.group(2).lower()]}"
+        ),
+        expanded,
+        flags=re.IGNORECASE,
+    )
+    expanded = re.sub(
+        r"(?:^|\n)\s*(?:\(([a-z])\)|([a-z])\.)\s*",
+        lambda match: (
+            f"{match.group(0)[:1] if match.group(0).startswith(chr(10)) else ''}"
+            f"Herufi {OPTION_LETTER_NAMES[(match.group(1) or match.group(2)).lower()]}. "
+        ),
+        expanded,
+        flags=re.IGNORECASE,
+    )
+    # A remaining parenthesized single letter is an alphabet marker (for
+    # example, “(i)”) and not a Roman range.  Explicit context avoids “moja”.
+    expanded = re.sub(
+        r"\(\s*([a-z])\s*\)",
+        lambda match: f"Herufi {OPTION_LETTER_NAMES[match.group(1).lower()]}",
         expanded,
         flags=re.IGNORECASE,
     )
@@ -109,11 +260,14 @@ def speech_text(text: str) -> str:
     )
 
 
-async def synthesize(text: str, destination: Path) -> None:
+async def synthesize(text: str, destination: Path, voice: str) -> None:
     temporary = destination.with_suffix(destination.suffix + ".tmp")
     for attempt in range(1, 4):
         try:
-            await edge_tts.Communicate(speech_text(text), voice=VOICE).save(str(temporary))
+            await asyncio.wait_for(
+                edge_tts.Communicate(speech_text(text), voice=voice).save(str(temporary)),
+                timeout=45,
+            )
             break
         except Exception:
             temporary.unlink(missing_ok=True)
@@ -129,6 +283,11 @@ async def synthesize(text: str, destination: Path) -> None:
 async def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--voice",
+        default=VOICE,
+        help=f"Microsoft neural voice to use (default: {VOICE}).",
+    )
     parser.add_argument(
         "--page",
         action="append",
@@ -173,6 +332,11 @@ async def main() -> int:
         "--letter-items-only",
         action="store_true",
         help="Generate only entries beginning with a lettered item such as (a).",
+    )
+    parser.add_argument(
+        "--alphabet-labels-only",
+        action="store_true",
+        help="Generate all entries that identify an alphabet letter or use it as a label.",
     )
     parser.add_argument(
         "--question-labels-only",
@@ -237,6 +401,8 @@ async def main() -> int:
         jobs = [job for job in jobs if roman_item.search(job[2])]
     if args.letter_items_only:
         jobs = [job for job in jobs if re.match(r"\s*\([a-d]\)", job[2], re.IGNORECASE)]
+    if args.alphabet_labels_only:
+        jobs = [job for job in jobs if ALPHABET_LABEL_PATTERN.search(job[2])]
     if args.question_labels_only:
         jobs = [job for job in jobs if job[2].startswith("Swali namba ")]
     if args.step_labels_only:
@@ -261,7 +427,7 @@ async def main() -> int:
 
     async def generate(index: int, filename: str, text: str) -> None:
         async with semaphore:
-            await synthesize(text, audio_directory / filename)
+            await synthesize(text, audio_directory / filename, args.voice)
             print(f"[{index}/{len(jobs)}] {filename}")
 
     await asyncio.gather(*(

@@ -39681,10 +39681,17 @@ function useAtomValueWithDelay<Value>(
   var readAloudModeAtom = ephemeralAtom(false);
   // Do not attempt playback before the learner presses the speaker control.
   // Browsers may reject automatic audio and leave a distracting visual cue.
-  var autoplayModeAtom = persistedBoolAtom("autoplayModeV2", false);
+  // Autoplay is deliberately session-only and always disabled.  In
+  // particular, never resume an old persisted setting when a learner opens a
+  // page: sign-language video and read-aloud must start only on direct input.
+  var autoplayModeAtom = ephemeralAtom(false);
   // Use a new persisted key so existing readers with word highlighting enabled
   // start with a calm, non-flashing read-aloud experience.
-  var wordHighlightModeAtom = persistedBoolAtom("wordHighlightModeV2", false);
+  // Use a new key so a previous sentence-only preference cannot suppress the
+  // project-standard yellow live-reading marker.
+  // Always begin a fresh page session with the project-standard live marker.
+  // A stale browser preference must not make narration invisible to the eye.
+  var wordHighlightModeAtom = ephemeralAtom(true);
   var describeImagesModeAtom = persistedBoolAtom("describeImagesMode", false);
   var audioSpeedAtom = persistedNumberAtom("audioSpeed", 1);
   var audioVolumeAtom = persistedNumberAtom("audioVolume", 1);
@@ -43631,6 +43638,10 @@ function useAtomValueWithDelay<Value>(
       if (!id) continue;
       const audio = resolvePlayableAudio(el, id, audioFiles, translations, easyReadMode);
       if (!audio) continue;
+      // Decorative icons must never become narration items.  Meaningful
+      // textbook illustrations remain available when image descriptions are
+      // enabled.
+      if (el.tagName.toLowerCase() === "img" && (el.dataset.decorative === "true" || el.getAttribute("aria-hidden") === "true" || el.getAttribute("role") === "presentation" || !String(el.getAttribute("alt") || "").trim())) continue;
       items.push({ el, ...audio });
     }
     return items;
@@ -43642,6 +43653,10 @@ function useAtomValueWithDelay<Value>(
     const playSessionRef = (0, import_react21.useRef)(0);
     const [isPlaying, setIsPlaying] = useAtom(isPlayingAtom);
     const [currentIndex, setCurrentIndex] = useAtom(currentAudioIndexAtom);
+    // Keep skip controls in sync immediately.  Atom updates can render on the
+    // following frame, while a learner may press Previous straight after Next.
+    const currentIndexRef = (0, import_react21.useRef)(currentIndex);
+    currentIndexRef.current = currentIndex;
     const activeMedia = useAtomValue(activeMediaAtom);
     const setActiveMedia = useSetAtom(activeMediaAtom);
     const bundleVersion = useAtomValue(appConfigAtom).bundleVersion;
@@ -43667,7 +43682,9 @@ function useAtomValueWithDelay<Value>(
     const items = (0, import_react21.useMemo)(() => {
       const all = gatherPlayableItems(audioFiles, translations, easyReadMode);
       if (describeImagesMode) return all;
-      return all.filter((item) => item.el.tagName.toLowerCase() !== "img");
+      return all.filter(
+        (item) => item.el.tagName.toLowerCase() !== "img" || item.el.dataset.requiredNarration === "true"
+      );
     }, [audioFiles, translations, easyReadMode, describeImagesMode]);
     const teardownActive = (0, import_react21.useCallback)(() => {
       const active = activeRef.current;
@@ -43726,6 +43743,7 @@ function useAtomValueWithDelay<Value>(
           return;
         }
         const item = items[index2];
+        currentIndexRef.current = index2;
         const url = `./content/i18n/${language}/audio/${item.filename}?v=${encodeURIComponent(bundleVersion ?? "")}`;
         if (!audioRef.current) audioRef.current = new Audio();
         const audio = audioRef.current;
@@ -43840,14 +43858,14 @@ function useAtomValueWithDelay<Value>(
     }, [pause, play]);
     const playNext = (0, import_react21.useCallback)(() => {
       if (items.length === 0) return;
-      const next = Math.min(currentIndex + 1, items.length - 1);
+      const next = Math.min(currentIndexRef.current + 1, items.length - 1);
       playAtIndex(next);
-    }, [currentIndex, items.length, playAtIndex]);
+    }, [items.length, playAtIndex]);
     const playPrevious = (0, import_react21.useCallback)(() => {
       if (items.length === 0) return;
-      const prev = Math.max(currentIndex - 1, 0);
+      const prev = Math.max(currentIndexRef.current - 1, 0);
       playAtIndex(prev);
-    }, [currentIndex, items.length, playAtIndex]);
+    }, [items.length, playAtIndex]);
     const stop = (0, import_react21.useCallback)(() => {
       stopAndClear();
       setIsPlaying(false);

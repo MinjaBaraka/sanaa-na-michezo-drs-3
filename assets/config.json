@@ -1,6 +1,6 @@
 {
   "title": "Sanaa na Michezo",
-  "bundleVersion": "29",
+  "bundleVersion": "84",
   "languages": {
     "available": [
       "sw-TZ"
@@ -13,7 +13,7 @@
     "glossary": true,
     "eli5": false,
     "readAloud": true,
-    "autoplay": true,
+    "autoplay": false,
     "showTutorial": true,
     "showNavigationControls": true,
     "describeImages": true,

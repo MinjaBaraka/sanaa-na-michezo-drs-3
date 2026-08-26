@@ -47,9 +47,23 @@
   font-display: swap;
 }
 
-/* Apply the font globally */
+/*
+ * The print book uses the Sassoon school-book face.  `local()` keeps the
+ * package fully offline: when Sassoon is installed on the device it is used
+ * without a network request; the carefully chosen fallbacks keep text usable
+ * on devices that do not include the licensed font.
+ */
+@font-face {
+  font-family: 'Sassoon Book';
+  src: local('Sassoon Primary'), local('Sassoon Primary Std'), local('Sassoon Book');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply the textbook font globally. */
 body, p, h1, h2, h3, h4, h5, h6, span, div, button, input, textarea, select {
-  font-family: "Merriweather", serif;
+  font-family: 'Sassoon Book', 'Sassoon Primary', 'Sassoon Sans', "Merriweather", serif;
 }
 
 /* Chrome UI font. FontAwesome marker classes are exempt: this ID+universal
