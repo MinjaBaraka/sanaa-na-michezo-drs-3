@@ -71,40 +71,6 @@
         }
       }
 
-      /* A clear, persistent writing area makes open-response exercises usable
-         on screen and when the book is used offline. */
-      #content .adt-answer-space {
-        margin: .55rem 0 1.25rem 0;
-        padding: .7rem .85rem;
-        border: 2px solid #f4b183;
-        border-radius: .65rem;
-        background: #fffdf5;
-      }
-      #content .adt-answer-space label {
-        display: block;
-        margin-bottom: .35rem;
-        color: #8a4b08;
-        font-weight: 700;
-      }
-      #content .adt-answer-space textarea {
-        display: block;
-        box-sizing: border-box;
-        width: 100%;
-        min-height: 7rem;
-        resize: vertical;
-        padding: .65rem;
-        border: 1px solid #d1a15e;
-        border-radius: .4rem;
-        background: #fff;
-        color: #172033;
-        font: inherit;
-        line-height: 1.45;
-      }
-      #content .adt-answer-space textarea:focus {
-        outline: 3px solid #fde047;
-        outline-offset: 2px;
-      }
-
       /* Live Read Aloud marker.  These rules live with the page runtime so
          they remain present even when an older compiled stylesheet is cached. */
       #content [data-word-index].bg-yellow-300,
@@ -153,60 +119,6 @@
       control.hidden = true;
       control.setAttribute("aria-hidden", "true");
       control.setAttribute("tabindex", "-1");
-    });
-  };
-
-  const QUESTION_START = /^(?:\s*(?:\(?[0-9]+\)?|\(?[ivxlcdm]+\)?|\([a-z]\))[.)]?\s*)?(?:je,|taja\b|eleza\b|andika\b|jibu\b|jadili\b|orodhesha\b|linganisha\b|fafanua\b|ainisha\b|onyesha\b|chora\b|tengeneza\b|fanya\b)/i;
-  const EXERCISE_HEADING = /\b(zoezi|jaribio|kazi ya kufanya|tathmini)\b/i;
-
-  const isInExercise = (element) => {
-    const section = element.closest('#content section, #content');
-    if (!section) return false;
-    const allText = section.textContent || '';
-    return EXERCISE_HEADING.test(allText);
-  };
-
-  const answerKeyFor = (element, index) => {
-    const page = document.querySelector('[data-section-id]')?.getAttribute('data-section-id') || location.pathname;
-    return `adt-answer:${page}:${element.getAttribute('data-id') || index}`;
-  };
-
-  const addAnswerSpaces = (root = document) => {
-    const candidates = root.querySelectorAll?.('#content [data-id]') || [];
-    candidates.forEach((element, index) => {
-      if (
-        element.classList.contains('sr-only') ||
-        element.closest('[data-activity-item], label, button, .adt-answer-space') ||
-        element.closest('[data-section-type="activity_multiple_choice"]')
-      ) return;
-      const prompt = (element.textContent || '').replace(/\s+/g, ' ').trim();
-      if (!QUESTION_START.test(prompt) || !isInExercise(element)) return;
-      let host = element.closest('p, li, div') || element;
-      // A prompt inside a horizontal question row must receive its writing
-      // area below the full row, never as a squeezed third column.
-      if (
-        host.parentElement?.classList.contains('flex') &&
-        host.parentElement.classList.contains('items-start')
-      ) {
-        host = host.parentElement;
-      }
-      if (host.nextElementSibling?.classList.contains('adt-answer-space')) return;
-      // Multiple-choice activities already provide an interaction and do not
-      // need an additional blank answer area.
-      if (host.parentElement?.querySelector(':scope > label [data-activity-item]')) return;
-      const key = answerKeyFor(element, index);
-      const wrapper = document.createElement('div');
-      wrapper.className = 'adt-answer-space';
-      const label = document.createElement('label');
-      label.textContent = 'Jibu lako';
-      const textarea = document.createElement('textarea');
-      textarea.rows = 4;
-      textarea.placeholder = 'Andika jibu lako hapa.';
-      textarea.setAttribute('aria-label', `Jibu lako kwa: ${prompt}`);
-      textarea.value = localStorage.getItem(key) || '';
-      textarea.addEventListener('input', () => localStorage.setItem(key, textarea.value));
-      wrapper.append(label, textarea);
-      host.insertAdjacentElement('afterend', wrapper);
     });
   };
 
@@ -301,7 +213,6 @@
     hideDecorativeFolios();
     isolateTocNarration();
     makeTableOfContentsClickable();
-    addAnswerSpaces();
     new MutationObserver((records) => {
       for (const record of records) {
         record.addedNodes.forEach((node) => {
@@ -311,7 +222,6 @@
             hideDecorativeFolios(node);
             isolateTocNarration();
             makeTableOfContentsClickable(node);
-            addAnswerSpaces(node);
           }
         });
       }
@@ -320,7 +230,6 @@
       hideDecorativeFolios();
       isolateTocNarration();
       makeTableOfContentsClickable();
-      addAnswerSpaces();
     }).observe(document.body, { childList: true, subtree: true, characterData: true });
   };
 
