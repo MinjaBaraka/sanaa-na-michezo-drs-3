@@ -195,17 +195,19 @@ def speech_text(text: str) -> str:
     expanded = re.sub(r"\bDkt\.\s*", "Daktari ", expanded, flags=re.IGNORECASE)
     expanded = re.sub(r"\bBw\.\s*", "Bwana ", expanded, flags=re.IGNORECASE)
     expanded = re.sub(r"\bTET\b", "T E T", expanded)
-    # Rehema should pronounce the standalone digit 4 as the full Swahili word.
-    # Do not change digits embedded in phone numbers, postcodes, or dates.
-    expanded = re.sub(r"(?<!\d)4(?!\d)", "nne", expanded)
     # Standardize figure labels so variants such as "Kielelezo Na 5" are
-    # spoken naturally as "Kielelezo namba 5".
+    # spoken naturally as "Kielelezo namba 5".  This must happen before
+    # standalone digits are expanded (otherwise "Na 4" becomes "Na nne"
+    # before the label can be normalized).
     expanded = re.sub(
         r"\bKielelezo\s+(?:Na\.?|Namba)\s*(?=\d)",
         "Kielelezo namba ",
         expanded,
         flags=re.IGNORECASE,
     )
+    # Rehema should pronounce the standalone digit 4 as the full Swahili word.
+    # Do not change digits embedded in phone numbers, postcodes, or dates.
+    expanded = re.sub(r"(?<!\d)4(?!\d)", "nne", expanded)
     # Convert Roman-numeral ranges before treating parenthesized single
     # letters as alphabet markers.
     expanded = re.sub(
@@ -221,7 +223,7 @@ def speech_text(text: str) -> str:
     # existing “Herufi a”, answer choices, list items, and identification
     # labels while leaving ordinary words and people’s initials untouched.
     expanded = re.sub(
-        r"\bHerufi\s*(?:\(\s*)?([a-z])\s*\)?\.?",
+        r"\bHerufi\s*(?:\(\s*)?([a-z])(?=\s|\)|\.|,|;|:|$)\s*\)?\.?",
         lambda match: f"Herufi {OPTION_LETTER_NAMES[match.group(1).lower()] }.",
         expanded,
         flags=re.IGNORECASE,

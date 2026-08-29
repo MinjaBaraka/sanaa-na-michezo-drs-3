@@ -87,6 +87,19 @@
         border-radius: 6px;
       }
 
+      /* Some PDF labels must stay visible as "(a)" while their paired
+         narration says "Herufi a" from a screen-reader-only span. Mirror
+         the active TTS state back onto that visible label, so every reader
+         still gets the same yellow live-reading marker. */
+      #content .adt-tts-highlight-proxy {
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        background-color: #fef08a !important;
+        box-shadow: 0 0 0 2px #eab308 !important;
+        color: #000 !important;
+        border-radius: 6px;
+      }
+
       /* Printed page folios are decorative PDF artefacts. Navigation is
          provided exclusively by the ADT reader dock. */
       #content .adt-decorative-folio {
@@ -159,10 +172,106 @@
       // The runtime may already have applied narration text from texts.json.
       // Restore the exact PDF label before retaining it as the visible node.
       visible.textContent = pdfText;
+      visible.dataset.adtNarrationProxy = id;
       visible.dataset.adtNarrationIsolated = 'true';
       visible.removeAttribute('data-id');
       visible.insertAdjacentElement('afterend', narration);
     });
+  };
+
+  // A marker label such as ``(a)`` remains the visible PDF text, while its
+  // TTS-safe narration (``Herufi a``) lives in the immediately-adjacent
+  // screen-reader-only span. The ADT player correctly highlights that hidden
+  // span, but users cannot see it. Mirror its active state onto the visible
+  // counterpart without changing either the PDF text or the spoken text.
+  let narrationHighlightProxiesInstalled = false;
+
+  const installNarrationHighlightProxies = () => {
+    const content = document.getElementById('content');
+    if (!content) return;
+
+    const isTextualVisual = (element) => {
+      if (!element || element.classList?.contains('sr-only')) return false;
+      if (['IMG', 'SVG', 'PATH', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) return false;
+      return Boolean((element.textContent || '').trim());
+    };
+
+    const parentHasVisibleSiblingText = (parent, narrator) => Array.from(parent.childNodes).some((node) => {
+      if (node === narrator) return false;
+      if (node.nodeType === Node.TEXT_NODE) return Boolean((node.textContent || '').trim());
+      if (node.nodeType !== Node.ELEMENT_NODE) return false;
+      const element = node;
+      return isTextualVisual(element) && !element.hidden;
+    });
+
+    const visibleProxyFor = (narrator) => {
+      const id = narrator.getAttribute('data-id');
+      const siblings = [narrator.previousElementSibling, narrator.nextElementSibling];
+      for (const sibling of siblings) {
+        if (!isTextualVisual(sibling)) continue;
+        if (sibling.getAttribute('aria-hidden') === 'true' || sibling.dataset.adtNarrationProxy === id) {
+          return sibling;
+        }
+      }
+
+      // Image-only narration has no visible text node. Highlight its figure
+      // (or the image itself) so learners still see where the description is.
+      const hiddenImage = siblings.find((sibling) => sibling?.tagName === 'IMG' && sibling.getAttribute('aria-hidden') === 'true');
+      if (hiddenImage) return hiddenImage.closest('figure') || hiddenImage;
+
+      // A small number of imported caption fragments are not direct sibling
+      // pairs. Highlight their text container rather than leaving no marker.
+      const parent = narrator.parentElement;
+      if (parent && parent !== content && parent.matches('p, li, div, figcaption, td, th') && parentHasVisibleSiblingText(parent, narrator)) {
+        return parent;
+      }
+
+      // Some activity titles intentionally use a second, hidden narration
+      // item. Reuse the identical visible title as its marker target.
+      const spoken = (narrator.textContent || '').replace(/\s+/g, ' ').trim();
+      if (spoken) {
+        return Array.from(content.querySelectorAll('[data-id]:not(.sr-only)')).find((element) => (
+          isTextualVisual(element)
+          && (element.textContent || '').replace(/\s+/g, ' ').trim() === spoken
+        )) || null;
+      }
+      return null;
+    };
+
+    const sync = () => {
+      const activeProxies = new Set();
+      content.querySelectorAll('.sr-only[data-id]').forEach((narrator) => {
+        const proxy = visibleProxyFor(narrator);
+        if (!proxy) return;
+        const active = narrator.hasAttribute('data-tts-original-html') || narrator.classList.contains('tts-active-block');
+        proxy.classList.toggle('adt-tts-highlight-proxy', active);
+        if (active) activeProxies.add(proxy);
+      });
+      content.querySelectorAll('.adt-tts-highlight-proxy').forEach((proxy) => {
+        if (!activeProxies.has(proxy)) proxy.classList.remove('adt-tts-highlight-proxy');
+      });
+    };
+
+    if (narrationHighlightProxiesInstalled) {
+      sync();
+      return;
+    }
+    narrationHighlightProxiesInstalled = true;
+    let frame = 0;
+    const scheduleSync = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        sync();
+      });
+    };
+    new MutationObserver(scheduleSync).observe(content, {
+      attributes: true,
+      attributeFilter: ['class', 'data-tts-original-html'],
+      childList: true,
+      subtree: true,
+    });
+    scheduleSync();
   };
 
   const makeTableOfContentsClickable = (root = document) => {
@@ -212,6 +321,7 @@
     markDecorativeIcons();
     hideDecorativeFolios();
     isolateTocNarration();
+    installNarrationHighlightProxies();
     makeTableOfContentsClickable();
     new MutationObserver((records) => {
       for (const record of records) {
@@ -229,6 +339,7 @@
       markDecorativeIcons();
       hideDecorativeFolios();
       isolateTocNarration();
+      installNarrationHighlightProxies();
       makeTableOfContentsClickable();
     }).observe(document.body, { childList: true, subtree: true, characterData: true });
   };
