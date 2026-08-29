@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synchronize editable localization manifests into offline-preloader.js."""
+"""Synchronize local JSON and HTML resources into offline-preloader.js."""
 
 from __future__ import annotations
 
@@ -19,20 +19,26 @@ def main() -> None:
     end = source.index(END, start)
     inline = json.loads(source[start:end])
 
-    json_resources = [
-        "assets/config.json",
-        "content/i18n/sw-TZ/texts.json",
-        "content/i18n/sw-TZ/audios.json",
-        "content/i18n/sw-TZ/videos.json",
-    ]
-    for resource in json_resources:
-        key = f"./{resource}"
-        if key in inline:
-            inline[key] = json.loads((ROOT / resource).read_text())
+    updated = []
+    for key in inline:
+        if not key.startswith("./"):
+            continue
+
+        path = (ROOT / key.removeprefix("./")).resolve()
+        if ROOT not in path.parents or not path.is_file():
+            continue
+
+        if path.suffix == ".json":
+            inline[key] = json.loads(path.read_text())
+        elif path.suffix == ".html":
+            inline[key] = path.read_text()
+        else:
+            continue
+        updated.append(key)
 
     serialized = json.dumps(inline, ensure_ascii=False, separators=(",", ":"))
     PRELOADER.write_text(source[:start] + serialized + source[end:])
-    print("Synchronized offline configuration and localized media mappings.")
+    print(f"Synchronized {len(updated)} local JSON/HTML resources for offline use.")
 
 
 if __name__ == "__main__":
