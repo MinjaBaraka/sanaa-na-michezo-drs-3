@@ -100,6 +100,16 @@
         border-radius: 6px;
       }
 
+      /* A few source-PDF tables keep their narration in a visually-hidden
+         companion block.  Mark the actual cell with the same ADT yellow
+         reader cue, without obscuring the table grid. */
+      #content td.adt-tts-highlight-proxy,
+      #content th.adt-tts-highlight-proxy {
+        background-color: #fde047 !important;
+        box-shadow: inset 0 0 0 2px #eab308 !important;
+        border-radius: 0;
+      }
+
       /* Printed page folios are decorative PDF artefacts. Navigation is
          provided exclusively by the ADT reader dock. */
       #content .adt-decorative-folio {
@@ -206,6 +216,13 @@
 
     const visibleProxyFor = (narrator) => {
       const id = narrator.getAttribute('data-id');
+
+      // Some source tables keep TTS-safe text in a following .sr-only block.
+      // Their visible cells declare the precise narrator they represent, so
+      // the yellow reader marker remains on the table rather than hidden text.
+      const explicit = id ? content.querySelector(`[data-adt-tts-proxy-for="${id}"]`) : null;
+      if (explicit && isTextualVisual(explicit)) return explicit;
+
       const siblings = [narrator.previousElementSibling, narrator.nextElementSibling];
       for (const sibling of siblings) {
         if (!isTextualVisual(sibling)) continue;
@@ -240,7 +257,7 @@
 
     const sync = () => {
       const activeProxies = new Set();
-      content.querySelectorAll('.sr-only[data-id]').forEach((narrator) => {
+      content.querySelectorAll('.sr-only[data-id], .sr-only [data-id]').forEach((narrator) => {
         const proxy = visibleProxyFor(narrator);
         if (!proxy) return;
         const active = narrator.hasAttribute('data-tts-original-html') || narrator.classList.contains('tts-active-block');

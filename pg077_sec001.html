@@ -10,6 +10,7 @@
     <link href="./content/tailwind_output.css?v=8" rel="stylesheet">
     <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="./assets/fonts.css?v=3" rel="stylesheet">
+    <link href="./assets/jaribio-interactions.css?v=3" rel="stylesheet">
     <style>
       /* Preserve paragraph flow from the source PDF after text is localized. */
       #content p [data-id]:not(.sr-only) {
@@ -45,14 +46,14 @@
         <div class="text-[1rem] sm:text-[1.2rem] lg:text-[1.35rem] leading-[1.45] font-normal">
           <div class="mb-3 sm:mb-4 flex items-start gap-3">
             <span class="shrink-0" aria-hidden="true">1.</span><span data-id="pg077_n0004" class="sr-only">Swali namba moja</span>
-            <span aria-hidden="true">Jibu vipengele (i)–(v) kwa kuchagua herufi ya jibu sahihi.</span><span data-id="pg077_n0005" class="sr-only">Namba za kirumi moja hadi namba za kirumi tano. Chagua herufi ya jibu sahihi.</span>
+            <span aria-hidden="true">Jibu vipengele (i)–(v) kwa kuchagua herufi ya jibu sahihi.</span><span data-id="pg077_n0005" class="sr-only">Jibu vipengele vya namba za Kirumi moja hadi tano kwa kuchagua herufi ya jibu sahihi.</span>
           </div>
 
           <div class="questions space-y-5 sm:space-y-6 lg:space-y-7" role="group">
-            <div>
+            <div data-jaribio-question data-jaribio-kind="activity-choice">
               <p class="mb-1"><span aria-hidden="true">(i) Sanaa za maonesho ni nini?</span><span data-id="pg077_n0006" class="sr-only">Namba za kirumi moja. Sanaa za maonesho ni nini?</span></p>
               <div class="pl-5 sm:pl-10 space-y-1">
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-1" value="item-1" data-activity-item="item-1" class="sr-only" tabindex="0" aria-label="Herufi a">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">A.</span><span data-id="pg077_n0008" class="sr-only">Herufi a.</span>
@@ -66,7 +67,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-1" value="item-2" data-activity-item="item-2" class="sr-only" tabindex="0" aria-label="Herufi b">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">B.</span><span data-id="pg077_n0011" class="sr-only">Herufi b.</span>
@@ -80,7 +81,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-1" value="item-3" data-activity-item="item-3" class="sr-only" tabindex="0" aria-label="Herufi c">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">C.</span><span data-id="pg077_n0014" class="sr-only">Herufi c.</span>
@@ -96,10 +97,10 @@
               </div>
             </div>
 
-            <div>
+            <div data-jaribio-question data-jaribio-kind="activity-choice">
               <p class="mb-1"><span aria-hidden="true">(ii) Ni aina gani ya sanaa za maonesho ambayo ni maarufu kwa watoto wa shule?</span><span data-id="pg077_n0016" class="sr-only">Namba za kirumi mbili. Ni aina gani ya sanaa za maonesho ambayo ni maarufu kwa watoto wa shule?</span></p>
               <div class="pl-5 sm:pl-10 space-y-1">
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-2" value="item-4" data-activity-item="item-4" class="sr-only" tabindex="0" aria-label="Herufi a">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">A.</span><span data-id="pg077_n0018" class="sr-only">Herufi a.</span>
@@ -113,7 +114,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-2" value="item-5" data-activity-item="item-5" class="sr-only" tabindex="0" aria-label="Herufi b">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">B.</span><span data-id="pg077_n0021" class="sr-only">Herufi b.</span>
@@ -127,7 +128,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-2" value="item-6" data-activity-item="item-6" class="sr-only" tabindex="0" aria-label="Herufi c">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">C.</span><span data-id="pg077_n0024" class="sr-only">Herufi c.</span>
@@ -143,10 +144,10 @@
               </div>
             </div>
 
-            <div>
+            <div data-jaribio-question data-jaribio-kind="activity-choice">
               <p class="mb-1"><span aria-hidden="true">(iii) Je, mavazi ya waigizaji kwenye sanaa za maonesho huitwaje?</span><span data-id="pg077_n0026" class="sr-only">Namba za kirumi tatu. Je, mavazi ya waigizaji kwenye sanaa za maonesho huitwaje?</span></p>
               <div class="pl-5 sm:pl-10 space-y-1">
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-3" value="item-7" data-activity-item="item-7" class="sr-only" tabindex="0" aria-label="Herufi a">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">A.</span><span data-id="pg077_n0028" class="sr-only">Herufi a.</span>
@@ -160,7 +161,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-3" value="item-8" data-activity-item="item-8" class="sr-only" tabindex="0" aria-label="Herufi b">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">B.</span><span data-id="pg077_n0031" class="sr-only">Herufi b.</span>
@@ -174,7 +175,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-3" value="item-9" data-activity-item="item-9" class="sr-only" tabindex="0" aria-label="Herufi c">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">C.</span><span data-id="pg077_n0034" class="sr-only">Herufi c.</span>
@@ -190,10 +191,10 @@
               </div>
             </div>
 
-            <div>
+            <div data-jaribio-question data-jaribio-kind="activity-choice">
               <p class="mb-1"><span aria-hidden="true">(iv) Je, ni kundi gani linawakilisha ala za muziki za kupuliza?</span><span data-id="pg077_n0036" class="sr-only">Namba za kirumi nne. Je, ni kundi gani linawakilisha ala za muziki za kupuliza?</span></p>
               <div class="pl-5 sm:pl-10 space-y-1">
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-4" value="item-10" data-activity-item="item-10" class="sr-only" tabindex="0" aria-label="Herufi a">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">A.</span><span data-id="pg077_n0038" class="sr-only">Herufi a.</span>
@@ -207,7 +208,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-4" value="item-11" data-activity-item="item-11" class="sr-only" tabindex="0" aria-label="Herufi b">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">B.</span><span data-id="pg077_n0041" class="sr-only">Herufi b.</span>
@@ -221,7 +222,7 @@
                   </span>
                 </label>
 
-                <label class="activity-option block cursor-pointer">
+                <label class="activity-option jaribio-choice-option block cursor-pointer">
                   <input type="radio" name="question-group-4" value="item-12" data-activity-item="item-12" class="sr-only" tabindex="0" aria-label="Herufi c">
                   <span class="flex items-start gap-2 sm:gap-4">
                     <span class="shrink-0" aria-hidden="true">C.</span><span data-id="pg077_n0044" class="sr-only">Herufi c.</span>
@@ -240,6 +241,12 @@
         </div>
       </div>
 
+      <div class="jaribio-actions mx-auto w-full max-w-[900px] px-3 sm:px-8 lg:px-10">
+        <button type="button" class="jaribio-check-button" data-jaribio-check>Kagua majibu</button>
+        <button type="button" class="jaribio-reset-button" data-jaribio-reset>Futa majibu</button>
+        <p class="jaribio-status" data-jaribio-status role="status" aria-live="polite"></p>
+      </div>
+
       <div class="mt-4 sm:mt-5 flex justify-center">
         <div class="rounded-full bg-lime-500 px-6 sm:px-8 py-2 text-[1.2rem] sm:text-[1.5rem] text-white leading-none">71</div>
       </div>
@@ -253,9 +260,10 @@
     </script>
     <div class="relative z-50" id="interface-container"></div>
     <div class="relative z-50" id="nav-container"></div>
-    <script src="./assets/offline-preloader.js?v=45"></script>
+    <script src="./assets/offline-preloader.js?v=51"></script>
     <script src="./assets/scorm.js"></script>
-    <script src="./assets/hide-submit-buttons.js?v=20"></script>
+    <script src="./assets/hide-submit-buttons.js?v=21"></script>
+    <script src="./assets/jaribio-interactions.js?v=3"></script>
     <script src="./assets/base.bundle.local.js?v=44"></script>
 </body>
 

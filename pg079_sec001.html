@@ -10,6 +10,7 @@
   <link href="./content/tailwind_output.css?v=8" rel="stylesheet">
   <link href="./assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
   <link href="./assets/fonts.css?v=3" rel="stylesheet">
+  <link href="./assets/jaribio-interactions.css?v=3" rel="stylesheet">
     <style>
       /* Preserve paragraph flow from the source PDF after text is localized. */
       #content p [data-id]:not(.sr-only) {
@@ -41,21 +42,22 @@
           class="pointer-events-none absolute inset-0 rounded-[2rem] shadow-[0_0_70px_rgba(255,230,150,0.22)_inset]">
         </div>
 
-        <div class="relative z-10 font-[cursive] font-normal">
+        <div class="relative z-10 font-normal">
           <div
-            class="space-y-2 text-[0.98rem] leading-[1.5] sm:space-y-3 sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]">
-            <p class="sm:pl-8 lg:pl-10"><span aria-hidden="true">(d) Wanafunzi wa Darasa la Tatu waliimba Wimbo wa
-                Taifa kwa sauti ya kwanza tu.</span><span data-id="pg079_n0002" class="sr-only">Herufi d. Wanafunzi wa Darasa la Tatu waliimba Wimbo wa Taifa kwa sauti ya kwanza tu.</span></p>
-            <p class="sm:pl-12 lg:pl-14"><span data-id="pg079_n0003">Je uimbaji huu huitwaje?</span>
-              <span aria-hidden="true" class="ml-2 inline-block w-28 border-b-2 border-dotted border-stone-500 align-middle sm:w-36">&nbsp;</span>
-            </p>
+            class="text-[0.98rem] leading-[1.5] sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]">
+            <div data-jaribio-question data-jaribio-kind="text" data-jaribio-answer="kuimba kwa sauti moja|uimbaji wa sauti moja|sauti moja">
+              <p class="sm:pl-8 lg:pl-10"><span aria-hidden="true">(d) Wanafunzi wa Darasa la Tatu waliimba Wimbo wa Taifa kwa sauti ya kwanza tu. Je uimbaji huu huitwaje?</span><span data-id="pg079_n0002" class="sr-only">Herufi d. Wanafunzi wa Darasa la Tatu waliimba Wimbo wa Taifa kwa sauti ya kwanza tu.</span><span data-id="pg079_n0003" class="sr-only">Je uimbaji huu huitwaje?</span>
+                <label class="sr-only" for="pg079-fill-d">Andika jibu la kipengele d</label>
+                <input id="pg079-fill-d" class="jaribio-inline-input" type="text" data-jaribio-persist="pg079-fill-d" autocomplete="off" aria-label="Andika jibu la kipengele d">
+              </p>
+            </div>
           </div>
 
           <div
-            class="mt-2 text-[0.98rem] leading-[1.5] sm:mt-3 sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]">
-            <p class="sm:pl-8 lg:pl-10"><span aria-hidden="true">(e) Kifaa kinachotumika kuondoa vipande vya mawe na
-                uchafu wakati wa kuandaa udongo wa mfinyanzi huitwa</span><span data-id="pg079_n0005" class="sr-only">Herufi e. Kifaa kinachotumika kuondoa vipande vya mawe na uchafu wakati wa kuandaa udongo wa mfinyanzi huitwa</span>
-              <span aria-hidden="true" class="ml-2 inline-block w-32 border-b-2 border-dotted border-stone-500 align-middle sm:w-40">&nbsp;</span>
+            class="mt-2 text-[0.98rem] leading-[1.5] sm:mt-3 sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]" data-jaribio-question data-jaribio-kind="text" data-jaribio-answer="chekeche">
+            <p class="sm:pl-8 lg:pl-10"><span aria-hidden="true">(e) Kifaa kinachotumika kuondoa vipande vya mawe na uchafu wakati wa kuandaa udongo wa mfinyanzi huitwa</span><span data-id="pg079_n0005" class="sr-only">Herufi e. Kifaa kinachotumika kuondoa vipande vya mawe na uchafu wakati wa kuandaa udongo wa mfinyanzi huitwa</span>
+              <label class="sr-only" for="pg079-fill-e">Andika jibu la kipengele e</label>
+              <input id="pg079-fill-e" class="jaribio-inline-input" type="text" data-jaribio-persist="pg079-fill-e" autocomplete="off" aria-label="Andika jibu la kipengele e">
             </p>
           </div>
 
@@ -63,54 +65,69 @@
             <div
               class="grid grid-cols-[auto_1fr] items-start gap-x-3 text-[0.98rem] leading-[1.5] sm:gap-x-4 sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]">
               <p aria-hidden="true">4.</p><span data-id="pg079_n0007" class="sr-only">Swali la nne</span>
-              <p><span data-id="pg079_n0008">Soma sentensi zifuatazo.</span></p>
+              <p><span data-id="pg079_n0008">Soma sentensi zifuatazo kisha Andika KWELI kama sentensi ni sahihi na SIKWELI kama sentensi si sahihi.</span></p>
             </div>
 
             <div
               class="mt-4 space-y-2 text-[0.97rem] leading-[1.45] sm:mt-5 sm:space-y-2 sm:text-[1.22rem] sm:leading-[1.45] lg:text-[1.46rem] lg:leading-[1.5]">
-              <fieldset class="m-0 border-0 p-0 activity-text">
+              <fieldset class="m-0 border-0 p-0 activity-text" data-jaribio-question data-jaribio-kind="radio" data-jaribio-answer="false">
                 <legend class="w-full">
                   <span class="block"><span class="activity-text" aria-hidden="true">(a) Zeze ni ala ya muziki katika
-                      kundi la ala za kugonga</span><span data-id="pg079_n0010" class="sr-only">Herufi a. Zeze ni ala ya muziki katika kundi la ala za kugonga</span> <span
-                      class="inline-block h-0 align-middle border-b-2 border-dotted border-stone-500 w-20 sm:w-24 lg:w-28 ml-2"></span>
+                      kundi la ala za kugonga</span><span data-id="pg079_n0010" class="sr-only">Herufi a. Zeze ni ala ya muziki katika kundi la ala za kugonga</span>
                   </span>
                 </legend>
+                <div class="jaribio-true-false-options">
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-a" value="true" data-jaribio-persist="pg079-tf-a" aria-label="Kipengele a, Kweli"><span>KWELI</span></label>
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-a" value="false" data-jaribio-persist="pg079-tf-a" aria-label="Kipengele a, Sikweli"><span>SIKWELI</span></label>
+                </div>
               </fieldset>
 
-              <fieldset class="m-0 border-0 p-0 activity-text">
+              <fieldset class="m-0 border-0 p-0 activity-text" data-jaribio-question data-jaribio-kind="radio" data-jaribio-answer="false">
                 <legend class="w-full">
                   <span class="block"><span class="activity-text" aria-hidden="true">(b) Picha nyingi huchorwa kwa
-                      kutumia penseli tu</span><span data-id="pg079_n0012" class="sr-only">Herufi b. Picha nyingi huchorwa kwa kutumia penseli tu</span> <span
-                      class="inline-block h-0 align-middle border-b-2 border-dotted border-stone-500 w-20 sm:w-24 lg:w-28 ml-2"></span>
+                      kutumia penseli tu</span><span data-id="pg079_n0012" class="sr-only">Herufi b. Picha nyingi huchorwa kwa kutumia penseli tu</span>
                   </span>
                 </legend>
+                <div class="jaribio-true-false-options">
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-b" value="true" data-jaribio-persist="pg079-tf-b" aria-label="Kipengele b, Kweli"><span>KWELI</span></label>
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-b" value="false" data-jaribio-persist="pg079-tf-b" aria-label="Kipengele b, Sikweli"><span>SIKWELI</span></label>
+                </div>
               </fieldset>
 
-              <fieldset class="m-0 border-0 p-0 activity-text">
+              <fieldset class="m-0 border-0 p-0 activity-text" data-jaribio-question data-jaribio-kind="radio" data-jaribio-answer="true">
                 <legend class="w-full">
                   <span class="block"><span class="activity-text" aria-hidden="true">(c) Mazoezi ya viungo husaidia
-                      kuimarisha stadi za uchezaji na utimamu wa mwili</span><span data-id="pg079_n0014" class="sr-only">Herufi c. Mazoezi ya viungo husaidia kuimarisha stadi za uchezaji na utimamu wa mwili</span> <span
-                      class="inline-block h-0 align-middle border-b-2 border-dotted border-stone-500 w-20 sm:w-24 lg:w-28 ml-2"></span>
+                      kuimarisha stadi za uchezaji na utimamu wa mwili</span><span data-id="pg079_n0014" class="sr-only">Herufi c. Mazoezi ya viungo husaidia kuimarisha stadi za uchezaji na utimamu wa mwili</span>
                   </span>
                 </legend>
+                <div class="jaribio-true-false-options">
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-c" value="true" data-jaribio-persist="pg079-tf-c" aria-label="Kipengele c, Kweli"><span>KWELI</span></label>
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-c" value="false" data-jaribio-persist="pg079-tf-c" aria-label="Kipengele c, Sikweli"><span>SIKWELI</span></label>
+                </div>
               </fieldset>
 
-              <fieldset class="m-0 border-0 p-0 activity-text">
+              <fieldset class="m-0 border-0 p-0 activity-text" data-jaribio-question data-jaribio-kind="radio" data-jaribio-answer="true">
                 <legend class="w-full">
                   <span class="block"><span class="activity-text" aria-hidden="true">(d) Maonesho ya sanaa husaidia
-                      kukuza ubunifu na vipawa kwa wanafunzi</span><span data-id="pg079_n0016" class="sr-only">Herufi d. Maonesho ya sanaa husaidia kukuza ubunifu na vipawa kwa wanafunzi</span> <span
-                      class="inline-block h-0 align-middle border-b-2 border-dotted border-stone-500 w-20 sm:w-24 lg:w-28 ml-2"></span>
+                      kukuza ubunifu na vipawa kwa wanafunzi</span><span data-id="pg079_n0016" class="sr-only">Herufi d. Maonesho ya sanaa husaidia kukuza ubunifu na vipawa kwa wanafunzi</span>
                   </span>
                 </legend>
+                <div class="jaribio-true-false-options">
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-d" value="true" data-jaribio-persist="pg079-tf-d" aria-label="Kipengele d, Kweli"><span>KWELI</span></label>
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-d" value="false" data-jaribio-persist="pg079-tf-d" aria-label="Kipengele d, Sikweli"><span>SIKWELI</span></label>
+                </div>
               </fieldset>
 
-              <fieldset class="m-0 border-0 p-0 activity-text">
+              <fieldset class="m-0 border-0 p-0 activity-text" data-jaribio-question data-jaribio-kind="radio" data-jaribio-answer="false">
                 <legend class="w-full">
                   <span class="block"><span class="activity-text" aria-hidden="true">(e) Nyimbo zikiimbwa bila ala za
-                      muziki hupoteza ubora wake</span><span data-id="pg079_n0018" class="sr-only">Herufi e. Nyimbo zikiimbwa bila ala za muziki hupoteza ubora wake</span> <span
-                      class="inline-block h-0 align-middle border-b-2 border-dotted border-stone-500 w-20 sm:w-24 lg:w-28 ml-2"></span>
+                      muziki hupoteza ubora wake</span><span data-id="pg079_n0018" class="sr-only">Herufi e. Nyimbo zikiimbwa bila ala za muziki hupoteza ubora wake</span>
                   </span>
                 </legend>
+                <div class="jaribio-true-false-options">
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-e" value="true" data-jaribio-persist="pg079-tf-e" aria-label="Kipengele e, Kweli"><span>KWELI</span></label>
+                  <label class="jaribio-true-false-option"><input type="radio" class="sr-only" name="pg079-tf-e" value="false" data-jaribio-persist="pg079-tf-e" aria-label="Kipengele e, Sikweli"><span>SIKWELI</span></label>
+                </div>
               </fieldset>
             </div>
           </div>
@@ -118,14 +135,26 @@
           <div
             class="mt-8 grid grid-cols-[auto_1fr] items-start gap-x-3 text-[0.98rem] leading-[1.5] sm:mt-10 sm:gap-x-4 sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]">
             <p aria-hidden="true">5.</p><span data-id="pg079_n0020" class="sr-only">Swali la tano</span>
-            <p><span data-id="pg079_n0021">Eleza kwa ufupi namna ya kufanya mazoezi ya ngazi ya wepesi.</span></p>
+            <div><span data-id="pg079_n0021">Eleza kwa ufupi namna ya kufanya mazoezi ya ngazi ya wepesi.</span>
+              <label class="sr-only" for="pg079-response-5">Andika jibu la swali la tano</label>
+              <textarea id="pg079-response-5" class="jaribio-response" data-jaribio-persist="pg079-response-5" data-jaribio-open-response autocomplete="off"></textarea>
+            </div>
           </div>
 
           <div
             class="mt-5 grid grid-cols-[auto_1fr] items-start gap-x-3 text-[0.98rem] leading-[1.5] sm:mt-7 sm:gap-x-4 sm:text-[1.3rem] sm:leading-[1.62] lg:text-[1.52rem] lg:leading-[1.58]">
             <p aria-hidden="true">6.</p><span data-id="pg079_n0023" class="sr-only">Swali la sita</span>
-            <p><span data-id="pg079_n0024">Eleza kwanini mchezaji wa kati anapoudaka mpira huwa anaurusha mbali wakati
-                wa kucheza rede ya kujaza mchanga kwenye chupa.</span></p>
+            <div><span data-id="pg079_n0024">Eleza kwanini mchezaji wa kati anapoudaka mpira huwa anaurusha mbali wakati
+                wa kucheza rede ya kujaza mchanga kwenye chupa.</span>
+              <label class="sr-only" for="pg079-response-6">Andika jibu la swali la sita</label>
+              <textarea id="pg079-response-6" class="jaribio-response" data-jaribio-persist="pg079-response-6" data-jaribio-open-response autocomplete="off"></textarea>
+            </div>
+          </div>
+
+          <div class="jaribio-actions">
+            <button type="button" class="jaribio-check-button" data-jaribio-check>Kagua majibu</button>
+            <button type="button" class="jaribio-reset-button" data-jaribio-reset>Futa majibu</button>
+            <p class="jaribio-status" data-jaribio-status role="status" aria-live="polite"></p>
           </div>
 
           <div id="validation-results-announcement" class="sr-only" role="status" aria-live="assertive"></div>
@@ -144,9 +173,10 @@
   </script>
   <div class="relative z-50" id="interface-container"></div>
   <div class="relative z-50" id="nav-container"></div>
-  <script src="./assets/offline-preloader.js?v=45"></script>
+  <script src="./assets/offline-preloader.js?v=51"></script>
   <script src="./assets/scorm.js"></script>
-  <script src="./assets/hide-submit-buttons.js?v=20"></script>
+  <script src="./assets/hide-submit-buttons.js?v=21"></script>
+  <script src="./assets/jaribio-interactions.js?v=3"></script>
   <script src="./assets/base.bundle.local.js?v=44"></script>
 </body>
 
