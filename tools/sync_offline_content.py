@@ -19,6 +19,19 @@ def main() -> None:
     end = source.index(END, start)
     inline = json.loads(source[start:end])
 
+    # Keep the offline reader aligned with the navigation spine when a page is
+    # inserted after the preloader was first generated.
+    pages_path = ROOT / "content" / "pages.json"
+    if pages_path.is_file():
+        for page in json.loads(pages_path.read_text()):
+            href = page.get("href")
+            if not isinstance(href, str):
+                continue
+            key = f"./{href}"
+            path = (ROOT / href).resolve()
+            if ROOT in path.parents and path.suffix == ".html" and path.is_file():
+                inline.setdefault(key, path.read_text())
+
     updated = []
     for key in inline:
         if not key.startswith("./"):
