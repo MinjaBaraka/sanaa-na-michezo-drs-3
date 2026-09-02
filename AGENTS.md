@@ -28,7 +28,7 @@ The `adt/` subdirectory is the self-contained web app. Other top-level files (`.
 SANAA-NA-MICHEZO-DRS-3/
 ├── adt/                              # THE WEB APP
 │   ├── index.html                    # Redirects to first page
-│   ├── cover.png                     # Book cover image
+│   ├── images/cover.png              # Book cover image
 │   ├── pg001_sec001.html             # Page HTML files (one per section)
 │   ├── pg002_sec001.html
 │   ├── ...
@@ -400,7 +400,7 @@ Update both:
 | CSS styles | `adt/content/tailwind_output.css` |
 | JS runtime | `adt/assets/base.bundle.min.js` |
 | UI string translations | `adt/assets/interface_translations/{lang}/` |
-| Cover image | `adt/cover.png` |
+| Cover image | `adt/images/cover.png` |
 | Original PDF | `SANAA-NA-MICHEZO-DRS-3.pdf` |
 | Pipeline database | `SANAA-NA-MICHEZO-DRS-3.db` (SQLite) |
 | Raw page renders | `images/pg{NNN}_page.png` (visual reference for original pages) |
