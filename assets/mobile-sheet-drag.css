@@ -1,0 +1,54 @@
+/* Mobile sheet layout matches the Writing Standard 1 ADT reader. */
+/* Release the title's desktop minimum so Settings remains visible at 640px. */
+@media (min-width: 640px) and (max-width: 767.98px) {
+  #nav-container [data-dock-trigger].min-w-64 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 639.98px) {
+  [data-mobile-sheet-draggable]:not([data-dock-panel]) {
+    max-height: calc(100dvh - max(1rem, env(safe-area-inset-top)));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  [data-mobile-sheet-drag-handle] {
+    position: relative !important;
+    display: block !important;
+    flex: 0 0 44px !important;
+    align-self: stretch !important;
+    width: 100% !important;
+    height: 44px !important;
+    margin: 0 !important;
+    border-radius: 0.5rem !important;
+    background: transparent !important;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  [data-mobile-sheet-drag-handle]::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    width: 40px;
+    height: 6px;
+    border-radius: 999px;
+    background: color-mix(in oklab, currentColor 25%, transparent);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  [data-mobile-sheet-drag-handle]:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+  }
+
+  [data-mobile-sheet-dragging] [data-mobile-sheet-drag-handle] {
+    cursor: grabbing;
+  }
+}
